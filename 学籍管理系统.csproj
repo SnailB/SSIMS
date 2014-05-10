@@ -72,6 +72,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>studentinfomanagedatabaseDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="studentRegisterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="studentRegisterForm.Designer.cs">
+      <DependentUpon>studentRegisterForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="studentRegisterForm.resx">
+      <DependentUpon>studentRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\AdminForm.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

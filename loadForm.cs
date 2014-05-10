@@ -127,5 +127,11 @@ namespace 学籍管理系统
         {
             ClearPromptInfo();
         }
+
+        private void regesitButton_Click(object sender, EventArgs e)
+        {
+            StudentRegisterForm studentRegisterForm = new StudentRegisterForm();
+            studentRegisterForm.Show();
+        }
     }
 }

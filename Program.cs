@@ -16,7 +16,7 @@ namespace 学籍管理系统
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminForm());
+            Application.Run(new loadForm());
         }
     }
 }

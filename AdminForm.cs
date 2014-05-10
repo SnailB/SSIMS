@@ -35,6 +35,8 @@ namespace 学籍管理系统
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.账户信息表”中。您可以根据需要移动或删除它。
+            this.账户信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.账户信息表);
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
             this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
@@ -136,9 +138,11 @@ namespace 学籍管理系统
         private void SetCollegeTableDataGridView()
         {
             // 初始化汇总信息表
-            string totalTableSelectQuery = "select 班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, 班级人数 " +
+            string totalTableSelectQuery = "select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 " +
                                             "from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 " +
-                                            "join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号";
+                                            "join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 " + 
+                                            "left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS '班级人数' " +
+                                            "FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号";
             myCommand = myConnection.CreateCommand();
             myConnection.Close();
             myCommand.CommandText = totalTableSelectQuery;
@@ -420,6 +424,85 @@ namespace 学籍管理系统
             {
                 imageFilePath = fileDiaolg.FileName;
                 照片PictureBox.Image = Image.FromFile(imageFilePath);
+            }
+        }
+
+        private void accountNameQueryButton_Click(object sender, EventArgs e)
+        {
+            账户信息表TableAdapter.FillByAccountName(this.studentinfomanagedatabaseDataSet.账户信息表, 账户名TextBox.Text);
+        }
+
+        private void accountCategoryButton_Click(object sender, EventArgs e)
+        {
+            账户信息表TableAdapter.FillByAccountCategory(this.studentinfomanagedatabaseDataSet.账户信息表, 账户类别TextBox.Text);
+        }
+
+        private void accountAuthorityButton_Click(object sender, EventArgs e)
+        {
+            账户信息表TableAdapter.FillByAccountAuthority(this.studentinfomanagedatabaseDataSet.账户信息表, int.Parse(账户权限TextBox.Text));
+        }
+
+        private void cleanAccountQueryButton_Click(object sender, EventArgs e)
+        {
+            账户信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.账户信息表);
+        }
+
+        private void accountInfoUpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.账户信息表BindingSource.EndEdit();
+                this.账户信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.账户信息表);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void addAccountRecordbutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.账户信息表BindingSource.EndEdit();
+
+                账户信息表TableAdapter.Insert(账户名TextBox.Text,账户密码TextBox.Text, 账户类别TextBox.Text, int.Parse(账户权限TextBox.Text));
+                //
+                // 直接向数据库中插入新数据后, dategridView不会更新, 需要fill一次更新bindSource
+                //
+                账户信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.账户信息表);
+                MessageBox.Show("Add Successful");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Add failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void deleteAccountRecordButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var reasult = MessageBox.Show("是否删除选中行数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (reasult == DialogResult.Yes)
+                {
+                    int selectRowsCount;
+                    selectRowsCount = 账户信息表DataGridView.SelectedRows.Count;
+                    DataGridViewRow[] myRows = new DataGridViewRow[selectRowsCount];
+                    账户信息表DataGridView.SelectedRows.CopyTo(myRows, 0);
+                    for (int i = 0; i < selectRowsCount; i++)
+                    {
+                        账户信息表DataGridView.Rows.Remove(myRows[i]);
+                    }
+                    账户信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.账户信息表);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

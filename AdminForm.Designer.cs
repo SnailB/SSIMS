@@ -42,8 +42,13 @@
             System.Windows.Forms.Label 身份证号码Label;
             System.Windows.Forms.Label 详细家庭住址Label;
             System.Windows.Forms.Label 备注Label;
+            System.Windows.Forms.Label 账户名Label;
+            System.Windows.Forms.Label 账户密码Label;
+            System.Windows.Forms.Label 账户类别Label;
+            System.Windows.Forms.Label 账户权限Label;
             this.schoolTabControl = new System.Windows.Forms.TabControl();
             this.schoolTabPage = new System.Windows.Forms.TabPage();
+            this.refresh = new System.Windows.Forms.Button();
             this.collegeCodeQueryButton = new System.Windows.Forms.Button();
             this.collegeInfoAddButton = new System.Windows.Forms.Button();
             this.collegeInfoDeleteButton = new System.Windows.Forms.Button();
@@ -69,6 +74,8 @@
             this.collegeComboBox = new System.Windows.Forms.ComboBox();
             this.collegeTableDataGridView = new System.Windows.Forms.DataGridView();
             this.studentTabPage = new System.Windows.Forms.TabPage();
+            this.choosePictureButton = new System.Windows.Forms.Button();
+            this.cleanQueryButton = new System.Windows.Forms.Button();
             this.入学时间DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.学生信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deleteStudentInfoButton = new System.Windows.Forms.Button();
@@ -93,13 +100,6 @@
             this.照片PictureBox = new System.Windows.Forms.PictureBox();
             this.备注TextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.accountTabPage = new System.Windows.Forms.TabPage();
-            this.exitSystemLable = new System.Windows.Forms.Label();
-            this.学校信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学校信息表TableAdapter();
-            this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
-            this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
-            this.cleanQueryButton = new System.Windows.Forms.Button();
-            this.choosePictureButton = new System.Windows.Forms.Button();
             this.学号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.姓名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.性别DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +110,28 @@
             this.专业名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.班级号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.电话号码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountTabPage = new System.Windows.Forms.TabPage();
+            this.cleanAccountQueryButton = new System.Windows.Forms.Button();
+            this.accountCategoryButton = new System.Windows.Forms.Button();
+            this.accountAuthorityButton = new System.Windows.Forms.Button();
+            this.账户权限TextBox = new System.Windows.Forms.TextBox();
+            this.账户信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.账户类别TextBox = new System.Windows.Forms.TextBox();
+            this.deleteAccountRecordButton = new System.Windows.Forms.Button();
+            this.addAccountRecordbutton = new System.Windows.Forms.Button();
+            this.accountInfoUpdateButton = new System.Windows.Forms.Button();
+            this.accountNameQueryButton = new System.Windows.Forms.Button();
+            this.账户名TextBox = new System.Windows.Forms.TextBox();
+            this.账户密码TextBox = new System.Windows.Forms.TextBox();
+            this.账户信息表DataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exitSystemLable = new System.Windows.Forms.Label();
+            this.学校信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学校信息表TableAdapter();
+            this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
+            this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
+            this.账户信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.账户信息表TableAdapter();
             学号Label = new System.Windows.Forms.Label();
             姓名Label = new System.Windows.Forms.Label();
             性别Label = new System.Windows.Forms.Label();
@@ -123,6 +145,10 @@
             身份证号码Label = new System.Windows.Forms.Label();
             详细家庭住址Label = new System.Windows.Forms.Label();
             备注Label = new System.Windows.Forms.Label();
+            账户名Label = new System.Windows.Forms.Label();
+            账户密码Label = new System.Windows.Forms.Label();
+            账户类别Label = new System.Windows.Forms.Label();
+            账户权限Label = new System.Windows.Forms.Label();
             this.schoolTabControl.SuspendLayout();
             this.schoolTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).BeginInit();
@@ -132,6 +158,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.照片PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.accountTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // 学号Label
@@ -251,6 +280,42 @@
             备注Label.TabIndex = 27;
             备注Label.Text = "备注:";
             // 
+            // 账户名Label
+            // 
+            账户名Label.AutoSize = true;
+            账户名Label.Location = new System.Drawing.Point(18, 25);
+            账户名Label.Name = "账户名Label";
+            账户名Label.Size = new System.Drawing.Size(47, 12);
+            账户名Label.TabIndex = 1;
+            账户名Label.Text = "账户名:";
+            // 
+            // 账户密码Label
+            // 
+            账户密码Label.AutoSize = true;
+            账户密码Label.Location = new System.Drawing.Point(18, 52);
+            账户密码Label.Name = "账户密码Label";
+            账户密码Label.Size = new System.Drawing.Size(59, 12);
+            账户密码Label.TabIndex = 3;
+            账户密码Label.Text = "账户密码:";
+            // 
+            // 账户类别Label
+            // 
+            账户类别Label.AutoSize = true;
+            账户类别Label.Location = new System.Drawing.Point(18, 79);
+            账户类别Label.Name = "账户类别Label";
+            账户类别Label.Size = new System.Drawing.Size(59, 12);
+            账户类别Label.TabIndex = 38;
+            账户类别Label.Text = "账户类别:";
+            // 
+            // 账户权限Label
+            // 
+            账户权限Label.AutoSize = true;
+            账户权限Label.Location = new System.Drawing.Point(18, 106);
+            账户权限Label.Name = "账户权限Label";
+            账户权限Label.Size = new System.Drawing.Size(59, 12);
+            账户权限Label.TabIndex = 39;
+            账户权限Label.Text = "账户权限:";
+            // 
             // schoolTabControl
             // 
             this.schoolTabControl.Controls.Add(this.schoolTabPage);
@@ -265,6 +330,7 @@
             // 
             // schoolTabPage
             // 
+            this.schoolTabPage.Controls.Add(this.refresh);
             this.schoolTabPage.Controls.Add(this.collegeCodeQueryButton);
             this.schoolTabPage.Controls.Add(this.collegeInfoAddButton);
             this.schoolTabPage.Controls.Add(this.collegeInfoDeleteButton);
@@ -294,6 +360,15 @@
             this.schoolTabPage.TabIndex = 0;
             this.schoolTabPage.Text = "学校信息管理";
             this.schoolTabPage.UseVisualStyleBackColor = true;
+            // 
+            // refresh
+            // 
+            this.refresh.Location = new System.Drawing.Point(565, 28);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(75, 23);
+            this.refresh.TabIndex = 25;
+            this.refresh.Text = "刷新";
+            this.refresh.UseVisualStyleBackColor = true;
             // 
             // collegeCodeQueryButton
             // 
@@ -562,6 +637,26 @@
             this.studentTabPage.Text = "学生信息管理";
             this.studentTabPage.UseVisualStyleBackColor = true;
             // 
+            // choosePictureButton
+            // 
+            this.choosePictureButton.Location = new System.Drawing.Point(492, 169);
+            this.choosePictureButton.Name = "choosePictureButton";
+            this.choosePictureButton.Size = new System.Drawing.Size(46, 23);
+            this.choosePictureButton.TabIndex = 38;
+            this.choosePictureButton.Text = "选择";
+            this.choosePictureButton.UseVisualStyleBackColor = true;
+            this.choosePictureButton.Click += new System.EventHandler(this.choosePictureButton_Click);
+            // 
+            // cleanQueryButton
+            // 
+            this.cleanQueryButton.Location = new System.Drawing.Point(366, 204);
+            this.cleanQueryButton.Name = "cleanQueryButton";
+            this.cleanQueryButton.Size = new System.Drawing.Size(75, 23);
+            this.cleanQueryButton.TabIndex = 37;
+            this.cleanQueryButton.Text = "清除查询";
+            this.cleanQueryButton.UseVisualStyleBackColor = true;
+            this.cleanQueryButton.Click += new System.EventHandler(this.cleanQueryButton_Click);
+            // 
             // 入学时间DateTimePicker
             // 
             this.入学时间DateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.学生信息表BindingSource, "入学日期", true));
@@ -689,6 +784,14 @@
             // 
             // 政治面貌TextBox
             // 
+            this.政治面貌TextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "党员",
+            "预备党员",
+            "共青团员",
+            "民盟党员",
+            "少先队员"});
+            this.政治面貌TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.政治面貌TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.政治面貌TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "政治面貌", true));
             this.政治面貌TextBox.Location = new System.Drawing.Point(92, 87);
             this.政治面貌TextBox.Name = "政治面貌TextBox";
@@ -792,64 +895,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(676, 292);
             this.dataGridView1.TabIndex = 0;
             // 
-            // accountTabPage
-            // 
-            this.accountTabPage.Location = new System.Drawing.Point(4, 22);
-            this.accountTabPage.Name = "accountTabPage";
-            this.accountTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.accountTabPage.Size = new System.Drawing.Size(675, 546);
-            this.accountTabPage.TabIndex = 2;
-            this.accountTabPage.Text = "账户信息管理";
-            this.accountTabPage.UseVisualStyleBackColor = true;
-            // 
-            // exitSystemLable
-            // 
-            this.exitSystemLable.AutoSize = true;
-            this.exitSystemLable.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.exitSystemLable.Location = new System.Drawing.Point(594, 43);
-            this.exitSystemLable.Name = "exitSystemLable";
-            this.exitSystemLable.Size = new System.Drawing.Size(85, 19);
-            this.exitSystemLable.TabIndex = 1;
-            this.exitSystemLable.Text = "退出系统";
-            // 
-            // 学校信息表TableAdapter
-            // 
-            this.学校信息表TableAdapter.ClearBeforeFill = true;
-            // 
-            // 学生信息表TableAdapter
-            // 
-            this.学生信息表TableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.UpdateOrder = 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.专业信息表TableAdapter = null;
-            this.tableAdapterManager.学校信息表TableAdapter = this.学校信息表TableAdapter;
-            this.tableAdapterManager.学生信息表TableAdapter = this.学生信息表TableAdapter;
-            this.tableAdapterManager.班级信息表TableAdapter = null;
-            this.tableAdapterManager.账户信息表TableAdapter = null;
-            // 
-            // cleanQueryButton
-            // 
-            this.cleanQueryButton.Location = new System.Drawing.Point(366, 204);
-            this.cleanQueryButton.Name = "cleanQueryButton";
-            this.cleanQueryButton.Size = new System.Drawing.Size(75, 23);
-            this.cleanQueryButton.TabIndex = 37;
-            this.cleanQueryButton.Text = "清除查询";
-            this.cleanQueryButton.UseVisualStyleBackColor = true;
-            this.cleanQueryButton.Click += new System.EventHandler(this.cleanQueryButton_Click);
-            // 
-            // choosePictureButton
-            // 
-            this.choosePictureButton.Location = new System.Drawing.Point(492, 169);
-            this.choosePictureButton.Name = "choosePictureButton";
-            this.choosePictureButton.Size = new System.Drawing.Size(46, 23);
-            this.choosePictureButton.TabIndex = 38;
-            this.choosePictureButton.Text = "选择";
-            this.choosePictureButton.UseVisualStyleBackColor = true;
-            this.choosePictureButton.Click += new System.EventHandler(this.choosePictureButton_Click);
-            // 
             // 学号DataGridViewTextBoxColumn
             // 
             this.学号DataGridViewTextBoxColumn.DataPropertyName = "学号";
@@ -920,6 +965,228 @@
             this.电话号码DataGridViewTextBoxColumn.Name = "电话号码DataGridViewTextBoxColumn";
             this.电话号码DataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // accountTabPage
+            // 
+            this.accountTabPage.AutoScroll = true;
+            this.accountTabPage.Controls.Add(this.cleanAccountQueryButton);
+            this.accountTabPage.Controls.Add(this.accountCategoryButton);
+            this.accountTabPage.Controls.Add(this.accountAuthorityButton);
+            this.accountTabPage.Controls.Add(账户权限Label);
+            this.accountTabPage.Controls.Add(this.账户权限TextBox);
+            this.accountTabPage.Controls.Add(账户类别Label);
+            this.accountTabPage.Controls.Add(this.账户类别TextBox);
+            this.accountTabPage.Controls.Add(this.deleteAccountRecordButton);
+            this.accountTabPage.Controls.Add(this.addAccountRecordbutton);
+            this.accountTabPage.Controls.Add(this.accountInfoUpdateButton);
+            this.accountTabPage.Controls.Add(this.accountNameQueryButton);
+            this.accountTabPage.Controls.Add(账户名Label);
+            this.accountTabPage.Controls.Add(this.账户名TextBox);
+            this.accountTabPage.Controls.Add(账户密码Label);
+            this.accountTabPage.Controls.Add(this.账户密码TextBox);
+            this.accountTabPage.Controls.Add(this.账户信息表DataGridView);
+            this.accountTabPage.Location = new System.Drawing.Point(4, 22);
+            this.accountTabPage.Name = "accountTabPage";
+            this.accountTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.accountTabPage.Size = new System.Drawing.Size(675, 546);
+            this.accountTabPage.TabIndex = 2;
+            this.accountTabPage.Text = "账户信息管理";
+            this.accountTabPage.UseVisualStyleBackColor = true;
+            // 
+            // cleanAccountQueryButton
+            // 
+            this.cleanAccountQueryButton.Location = new System.Drawing.Point(260, 20);
+            this.cleanAccountQueryButton.Name = "cleanAccountQueryButton";
+            this.cleanAccountQueryButton.Size = new System.Drawing.Size(75, 23);
+            this.cleanAccountQueryButton.TabIndex = 43;
+            this.cleanAccountQueryButton.Text = "清除查询";
+            this.cleanAccountQueryButton.UseVisualStyleBackColor = true;
+            this.cleanAccountQueryButton.Click += new System.EventHandler(this.cleanAccountQueryButton_Click);
+            // 
+            // accountCategoryButton
+            // 
+            this.accountCategoryButton.Location = new System.Drawing.Point(189, 74);
+            this.accountCategoryButton.Name = "accountCategoryButton";
+            this.accountCategoryButton.Size = new System.Drawing.Size(43, 23);
+            this.accountCategoryButton.TabIndex = 42;
+            this.accountCategoryButton.Text = "查询";
+            this.accountCategoryButton.UseVisualStyleBackColor = true;
+            this.accountCategoryButton.Click += new System.EventHandler(this.accountCategoryButton_Click);
+            // 
+            // accountAuthorityButton
+            // 
+            this.accountAuthorityButton.Location = new System.Drawing.Point(189, 101);
+            this.accountAuthorityButton.Name = "accountAuthorityButton";
+            this.accountAuthorityButton.Size = new System.Drawing.Size(43, 23);
+            this.accountAuthorityButton.TabIndex = 41;
+            this.accountAuthorityButton.Text = "查询";
+            this.accountAuthorityButton.UseVisualStyleBackColor = true;
+            this.accountAuthorityButton.Click += new System.EventHandler(this.accountAuthorityButton_Click);
+            // 
+            // 账户权限TextBox
+            // 
+            this.账户权限TextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3"});
+            this.账户权限TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.账户权限TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.账户权限TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.账户信息表BindingSource, "账户权限", true));
+            this.账户权限TextBox.Location = new System.Drawing.Point(83, 103);
+            this.账户权限TextBox.Name = "账户权限TextBox";
+            this.账户权限TextBox.Size = new System.Drawing.Size(100, 21);
+            this.账户权限TextBox.TabIndex = 40;
+            // 
+            // 账户信息表BindingSource
+            // 
+            this.账户信息表BindingSource.DataMember = "账户信息表";
+            this.账户信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
+            // 账户类别TextBox
+            // 
+            this.账户类别TextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "管理员",
+            "教师",
+            "学生"});
+            this.账户类别TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.账户类别TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.账户类别TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.账户信息表BindingSource, "账户类别", true));
+            this.账户类别TextBox.Location = new System.Drawing.Point(83, 76);
+            this.账户类别TextBox.Name = "账户类别TextBox";
+            this.账户类别TextBox.Size = new System.Drawing.Size(100, 21);
+            this.账户类别TextBox.TabIndex = 39;
+            // 
+            // deleteAccountRecordButton
+            // 
+            this.deleteAccountRecordButton.Location = new System.Drawing.Point(358, 101);
+            this.deleteAccountRecordButton.Name = "deleteAccountRecordButton";
+            this.deleteAccountRecordButton.Size = new System.Drawing.Size(43, 23);
+            this.deleteAccountRecordButton.TabIndex = 38;
+            this.deleteAccountRecordButton.Text = "删除";
+            this.deleteAccountRecordButton.UseVisualStyleBackColor = true;
+            this.deleteAccountRecordButton.Click += new System.EventHandler(this.deleteAccountRecordButton_Click);
+            // 
+            // addAccountRecordbutton
+            // 
+            this.addAccountRecordbutton.Location = new System.Drawing.Point(309, 101);
+            this.addAccountRecordbutton.Name = "addAccountRecordbutton";
+            this.addAccountRecordbutton.Size = new System.Drawing.Size(43, 23);
+            this.addAccountRecordbutton.TabIndex = 37;
+            this.addAccountRecordbutton.Text = "增加";
+            this.addAccountRecordbutton.UseVisualStyleBackColor = true;
+            this.addAccountRecordbutton.Click += new System.EventHandler(this.addAccountRecordbutton_Click);
+            // 
+            // accountInfoUpdateButton
+            // 
+            this.accountInfoUpdateButton.Location = new System.Drawing.Point(260, 101);
+            this.accountInfoUpdateButton.Name = "accountInfoUpdateButton";
+            this.accountInfoUpdateButton.Size = new System.Drawing.Size(43, 23);
+            this.accountInfoUpdateButton.TabIndex = 36;
+            this.accountInfoUpdateButton.Text = "更新";
+            this.accountInfoUpdateButton.UseVisualStyleBackColor = true;
+            this.accountInfoUpdateButton.Click += new System.EventHandler(this.accountInfoUpdateButton_Click);
+            // 
+            // accountNameQueryButton
+            // 
+            this.accountNameQueryButton.Location = new System.Drawing.Point(189, 20);
+            this.accountNameQueryButton.Name = "accountNameQueryButton";
+            this.accountNameQueryButton.Size = new System.Drawing.Size(43, 23);
+            this.accountNameQueryButton.TabIndex = 9;
+            this.accountNameQueryButton.Text = "查询";
+            this.accountNameQueryButton.UseVisualStyleBackColor = true;
+            this.accountNameQueryButton.Click += new System.EventHandler(this.accountNameQueryButton_Click);
+            // 
+            // 账户名TextBox
+            // 
+            this.账户名TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.账户信息表BindingSource, "账户名", true));
+            this.账户名TextBox.Location = new System.Drawing.Point(83, 22);
+            this.账户名TextBox.Name = "账户名TextBox";
+            this.账户名TextBox.Size = new System.Drawing.Size(100, 21);
+            this.账户名TextBox.TabIndex = 2;
+            // 
+            // 账户密码TextBox
+            // 
+            this.账户密码TextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.账户信息表BindingSource, "账户密码", true));
+            this.账户密码TextBox.Location = new System.Drawing.Point(83, 49);
+            this.账户密码TextBox.Name = "账户密码TextBox";
+            this.账户密码TextBox.PasswordChar = '*';
+            this.账户密码TextBox.Size = new System.Drawing.Size(100, 21);
+            this.账户密码TextBox.TabIndex = 4;
+            // 
+            // 账户信息表DataGridView
+            // 
+            this.账户信息表DataGridView.AllowUserToAddRows = false;
+            this.账户信息表DataGridView.AllowUserToDeleteRows = false;
+            this.账户信息表DataGridView.AllowUserToOrderColumns = true;
+            this.账户信息表DataGridView.AutoGenerateColumns = false;
+            this.账户信息表DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.账户信息表DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.账户信息表DataGridView.DataSource = this.账户信息表BindingSource;
+            this.账户信息表DataGridView.Location = new System.Drawing.Point(3, 140);
+            this.账户信息表DataGridView.Name = "账户信息表DataGridView";
+            this.账户信息表DataGridView.ReadOnly = true;
+            this.账户信息表DataGridView.RowTemplate.Height = 23;
+            this.账户信息表DataGridView.Size = new System.Drawing.Size(669, 406);
+            this.账户信息表DataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "账户名";
+            this.dataGridViewTextBoxColumn1.HeaderText = "账户名";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 230;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "账户类别";
+            this.dataGridViewTextBoxColumn3.HeaderText = "账户类别";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "账户权限";
+            this.dataGridViewTextBoxColumn4.HeaderText = "账户权限";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 200;
+            // 
+            // exitSystemLable
+            // 
+            this.exitSystemLable.AutoSize = true;
+            this.exitSystemLable.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.exitSystemLable.Location = new System.Drawing.Point(594, 43);
+            this.exitSystemLable.Name = "exitSystemLable";
+            this.exitSystemLable.Size = new System.Drawing.Size(85, 19);
+            this.exitSystemLable.TabIndex = 1;
+            this.exitSystemLable.Text = "退出系统";
+            // 
+            // 学校信息表TableAdapter
+            // 
+            this.学校信息表TableAdapter.ClearBeforeFill = true;
+            // 
+            // 学生信息表TableAdapter
+            // 
+            this.学生信息表TableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.UpdateOrder = 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.专业信息表TableAdapter = null;
+            this.tableAdapterManager.学校信息表TableAdapter = this.学校信息表TableAdapter;
+            this.tableAdapterManager.学生信息表TableAdapter = this.学生信息表TableAdapter;
+            this.tableAdapterManager.班级信息表TableAdapter = null;
+            this.tableAdapterManager.账户信息表TableAdapter = null;
+            // 
+            // 账户信息表TableAdapter
+            // 
+            this.账户信息表TableAdapter.ClearBeforeFill = true;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -941,6 +1208,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.照片PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.accountTabPage.ResumeLayout(false);
+            this.accountTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1016,5 +1287,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 专业名DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 班级号DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 电话号码DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 账户信息表BindingSource;
+        private studentinfomanagedatabaseDataSetTableAdapters.账户信息表TableAdapter 账户信息表TableAdapter;
+        private System.Windows.Forms.Button accountNameQueryButton;
+        private System.Windows.Forms.TextBox 账户名TextBox;
+        private System.Windows.Forms.TextBox 账户密码TextBox;
+        private System.Windows.Forms.DataGridView 账户信息表DataGridView;
+        private System.Windows.Forms.Button deleteAccountRecordButton;
+        private System.Windows.Forms.Button addAccountRecordbutton;
+        private System.Windows.Forms.Button accountInfoUpdateButton;
+        private System.Windows.Forms.Button refresh;
+        private System.Windows.Forms.TextBox 账户权限TextBox;
+        private System.Windows.Forms.TextBox 账户类别TextBox;
+        private System.Windows.Forms.Button accountCategoryButton;
+        private System.Windows.Forms.Button accountAuthorityButton;
+        private System.Windows.Forms.Button cleanAccountQueryButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }

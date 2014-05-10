@@ -93,6 +93,7 @@
             this.regesitButton.TabIndex = 4;
             this.regesitButton.Text = "注册";
             this.regesitButton.UseVisualStyleBackColor = true;
+            this.regesitButton.Click += new System.EventHandler(this.regesitButton_Click);
             // 
             // userLabel
             // 
