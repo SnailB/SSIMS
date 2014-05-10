@@ -35,17 +35,21 @@ namespace 学籍管理系统
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
             #region 学校管理panel
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学校信息表”中。您可以根据需要移动或删除它。
             this.学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
 
-            collegeCodeComboBox.TextChanged += collegeCodeComboBox_TextChanged;
-            professionCodeComboBox.TextChanged += professionCodeComboBox_TextChanged;
-            classCodeComboBox.TextChanged += classCodeComboBox_TextChanged;
-            //classCodeComboBox.MouseClick += classCodeComboBox_MouseClick;
-            //classCodeComboBox.MouseLeave += classCodeComboBox_MouseLeave;
-            //professionCodeComboBox.MouseClick += professionCodeComboBox_MouseClick;
-            //professionCodeComboBox.MouseLeave += professionCodeComboBox_MouseLeave;
+            collegeCodeComboBox.SelectedValueChanged += collegeCodeComboBox_SelectedValueChanged;
+            professionCodeComboBox.SelectedValueChanged += professionCodeComboBox_SelectedValueChanged;
+            classCodeComboBox.SelectedValueChanged += classCodeComboBox_SelectedValueChanged;
 
             myConnection = new MySqlConnection(connectStringBuilder.ConnectionString);
             // 初始化专业信息栏
@@ -66,31 +70,10 @@ namespace 学籍管理系统
 
             #endregion
         }
-
-        //void professionCodeComboBox_MouseLeave(object sender, EventArgs e)
-        //{
-        //    professionCodeComboBox.TextChanged += professionCodeComboBox_TextChanged;
-        //}
-
-        //void professionCodeComboBox_MouseClick(object sender, MouseEventArgs e)
-        //{
-        //    professionCodeComboBox.TextChanged -= professionCodeComboBox_TextChanged;
-        //}
-
-        //void classCodeComboBox_MouseLeave(object sender, EventArgs e)
-        //{
-        //    classCodeComboBox.TextChanged += classCodeComboBox_TextChanged;
-        //}
-
-        //void classCodeComboBox_MouseClick(object sender, MouseEventArgs e)
-        //{
-        //    classCodeComboBox.TextChanged -= classCodeComboBox_TextChanged;
-        //}
-
         //
         // 更新DataGridView选中状态
         //
-        void classCodeComboBox_TextChanged(object sender, EventArgs e)
+        void classCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow myRow in collegeTableDataGridView.Rows)
             {
@@ -105,7 +88,7 @@ namespace 学籍管理系统
         //
         // 更新班级信息栏
         //
-        void professionCodeComboBox_TextChanged(object sender, EventArgs e)
+        void professionCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             string classSelectQuery = "select 班级名称, 班级号 from 班级信息表 where (专业代码 = '$professionCode')";
             classSelectQuery = classSelectQuery.Replace("$professionCode", professionCodeComboBox.Text);
@@ -117,7 +100,7 @@ namespace 学籍管理系统
         //
         // 更新专业信息栏
         //
-        void collegeCodeComboBox_TextChanged(object sender, EventArgs e)
+        void collegeCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             string professionSelectQuery = "select 专业名, 专业代码 from 专业信息表 where (院系编号 = '$collegeCode')";
             professionSelectQuery = professionSelectQuery.Replace("$collegeCode", collegeCodeComboBox.Text);
@@ -147,6 +130,7 @@ namespace 学籍管理系统
             //
             updateComboBox.DataSource = myBindingSource;
             updateComboBox.DisplayMember = DataMember;
+            updateComboBox.ValueMember = DataMember;
             updateComboBox.FormattingEnabled = true;
         }
         private void SetCollegeTableDataGridView()
@@ -163,6 +147,7 @@ namespace 学籍管理系统
             myAdapter.Fill(myDataTable);
             myDataTable.TableName = "Table";
             tableBindingSource.DataSource = myDataTable;
+
             collegeTableDataGridView.DataSource = tableBindingSource;
             // 初始化选中行
             foreach (DataGridViewRow myRow in collegeTableDataGridView.Rows)
@@ -284,7 +269,7 @@ namespace 学籍管理系统
                 DeleteOneRecord("学校信息表", "院系编号", collegeCodeComboBox.Text);
                 学校信息表BindingSource.RemoveCurrent();
             }
-            
+
         }
 
         private void classInfoAddButton_Click(object sender, EventArgs e)
@@ -314,7 +299,7 @@ namespace 学籍管理系统
             addCommand.Parameters.AddWithValue("@professionName", professionComboBox.Text);
             addCommand.Parameters.AddWithValue("@collegeCode", collegeCodeComboBox.Text);
             addCommand.Parameters.AddWithValue("@classCountOfProfession", 0);
-            AddOneRecord(addCommand); 
+            AddOneRecord(addCommand);
             string professionSelectQuery = "select 专业名, 专业代码 from 专业信息表 where (院系编号 = '$collegeCode')";
             professionSelectQuery = professionSelectQuery.Replace("$collegeCode", collegeCodeComboBox.Text);
             UpdateDataSource(professionBindingSource, professionSelectQuery, professionComboBox, "专业名");
@@ -334,5 +319,108 @@ namespace 学籍管理系统
 
         }
 
+        private void addStudentInfoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.学生信息表BindingSource.EndEdit();
+
+                学生信息表TableAdapter.Insert(学号TextBox.Text, 姓名TextBox.Text, 性别TextBox.Text, 出生日期DateTimePicker.Value,
+                    政治面貌TextBox.Text, 入学时间DateTimePicker.Value, 院系名TextBox.Text, 专业名TextBox.Text, 班级号TextBox.Text,
+                    电话号码TextBox.Text, 身份证号码TextBox.Text, 详细家庭住址TextBox.Text, null, 备注TextBox.Text);
+                //
+                // 直接向数据库中插入新数据后, dategridView不会更新, 需要fill一次更新bindSource
+                //
+                学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
+                MessageBox.Show("Add Successful");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Add failed:" + ex.Message, "错误",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void queryByNameButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.FillByStudentName(this.studentinfomanagedatabaseDataSet.学生信息表, 姓名TextBox.Text);
+        }
+
+        private void queryByPoliticalStatusButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.FillByPoliticalStatus(this.studentinfomanagedatabaseDataSet.学生信息表, 政治面貌TextBox.Text);
+        }
+
+        private void queryByCollegeNameButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.FillByCollegeName(this.studentinfomanagedatabaseDataSet.学生信息表, 院系名TextBox.Text);
+        }
+
+        private void queryByProfessionNameButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.FillByProfessionName(this.studentinfomanagedatabaseDataSet.学生信息表, 专业名TextBox.Text);
+        }
+
+        private void queryByClassCodeButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.FillByClassCode(this.studentinfomanagedatabaseDataSet.学生信息表, 班级号TextBox.Text);
+        }
+
+        private void updateStudentInfoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Validate();
+                this.学生信息表BindingSource.EndEdit();
+                this.学生信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.学生信息表);
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteStudentInfoButton_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                var reasult = MessageBox.Show("是否删除选中行数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (reasult == DialogResult.Yes)
+                {
+                    int selectRowsCount;
+                    selectRowsCount = dataGridView1.SelectedRows.Count;
+                    DataGridViewRow[] myRows = new DataGridViewRow[selectRowsCount];
+                    dataGridView1.SelectedRows.CopyTo(myRows, 0);
+                    for (int i = 0; i < selectRowsCount; i++)
+                    {
+                        dataGridView1.Rows.Remove(myRows[i]);
+                    }
+                    学生信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.学生信息表);
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void cleanQueryButton_Click(object sender, EventArgs e)
+        {
+            学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
+        }
+
+        private void choosePictureButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDiaolg = new OpenFileDialog();
+            string imageFilePath;
+            fileDiaolg.Filter = "图片文件|*.jpg; *.jpeg; *.png; *.bmp|JPEG|*.jpg; *.jpeg|PNG|*.png|位图文件|*.bmp";
+            if (fileDiaolg.ShowDialog() == DialogResult.OK)
+            {
+                imageFilePath = fileDiaolg.FileName;
+                照片PictureBox.Image = Image.FromFile(imageFilePath);
+            }
+        }
     }
 }

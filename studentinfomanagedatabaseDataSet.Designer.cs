@@ -3917,7 +3917,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[7];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
@@ -3926,8 +3926,81 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表`";
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where(班级号 = @classCode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@classCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "班级号";
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (院系名 = @collegeName)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@collegeName";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "院系名";
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (政治面貌 = @politicalStatus)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@politicalStatus";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "政治面貌";
+            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (专业名 = @professionName)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@professionName";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "专业名";
+            this._commandCollection[4].Parameters.Add(param);
+            this._commandCollection[5] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` WHERE (学号 = @studentID)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@studentID";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "学号";
+            this._commandCollection[5].Parameters.Add(param);
+            this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
+                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (姓名 = @studentName)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@studentName";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "姓名";
+            this._commandCollection[6].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3958,13 +4031,216 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable) {
+        public virtual int FillByClassCode(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string classCode) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByClassCode(string classCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCollegeName(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string collegeName) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((collegeName == null)) {
+                throw new global::System.ArgumentNullException("collegeName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByCollegeName(string collegeName) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((collegeName == null)) {
+                throw new global::System.ArgumentNullException("collegeName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeName));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPoliticalStatus(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string politicalStatus) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((politicalStatus == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(politicalStatus));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByPoliticalStatus(string politicalStatus) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((politicalStatus == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(politicalStatus));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByProfessionName(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string professionName) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((professionName == null)) {
+                throw new global::System.ArgumentNullException("professionName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByProfessionName(string professionName) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((professionName == null)) {
+                throw new global::System.ArgumentNullException("professionName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionName));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByStudentID(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string studentID) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((studentID == null)) {
+                throw new global::System.ArgumentNullException("studentID");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentID));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByStudentID(string studentID) {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
+            if ((studentID == null)) {
+                throw new global::System.ArgumentNullException("studentID");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentID));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByStudentName(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string studentName) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            if ((studentName == null)) {
+                throw new global::System.ArgumentNullException("studentName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentName));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByStudentName(string studentName) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            if ((studentName == null)) {
+                throw new global::System.ArgumentNullException("studentName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(studentName));
+            }
+            studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学生信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
