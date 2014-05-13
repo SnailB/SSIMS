@@ -60,12 +60,21 @@ namespace 学籍管理系统
             {
                 switch ((int)dataTable.Rows[0]["账户权限"])
                 {
-                    case 1: 
+                    case 1:
+                        this.Hide();
                         AdminForm adminFrom = new AdminForm();
                         adminFrom.Show();
                         break;
                     case 2:
-
+                        this.Hide();
+                        TeacherQueryForm teacherForm = new TeacherQueryForm();
+                        teacherForm.Show();
+                        break;
+                    case 3:
+                        this.Hide();
+                        StudentInfoForm studentInfoForm = new StudentInfoForm(dataTable.Rows[0]["账户名"].ToString());
+                        studentInfoForm.Show();
+                        break;
                     default:
                         break;
                 }
@@ -130,8 +139,15 @@ namespace 学籍管理系统
 
         private void regesitButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
             StudentRegisterForm studentRegisterForm = new StudentRegisterForm();
             studentRegisterForm.Show();
+            studentRegisterForm.FormClosed += studentRegisterForm_FormClosed;
+        }
+
+        void studentRegisterForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
     }
 }

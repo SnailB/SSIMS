@@ -63,6 +63,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentInfoForm.Designer.cs">
+      <DependentUpon>StudentInfoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="studentinfomanagedatabaseDataSet.cs">
       <DependentUpon>studentinfomanagedatabaseDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="studentRegisterForm.Designer.cs">
       <DependentUpon>studentRegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teacherQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="teacherQueryForm.Designer.cs">
+      <DependentUpon>teacherQueryForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -93,8 +105,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StudentInfoForm.resx">
+      <DependentUpon>StudentInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="studentRegisterForm.resx">
       <DependentUpon>studentRegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teacherQueryForm.resx">
+      <DependentUpon>teacherQueryForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\AdminForm.datasource" />
     <None Include="Properties\Settings.settings">
