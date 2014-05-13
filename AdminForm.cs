@@ -527,7 +527,7 @@ namespace 学籍管理系统
 
                 学生信息表TableAdapter.Insert(学号TextBox.Text, 姓名TextBox.Text, 性别TextBox.Text, 出生日期DateTimePicker.Value,
                     政治面貌TextBox.Text, 入学时间DateTimePicker.Value, 院系名TextBox.Text, 专业名TextBox.Text, 班级号TextBox.Text,
-                    电话号码TextBox.Text, 身份证号码TextBox.Text, 详细家庭住址TextBox.Text, null, 备注TextBox.Text);
+                    电话号码TextBox.Text, 身份证号码TextBox.Text, 详细家庭住址TextBox.Text, null, 备注TextBox.Text, int.Parse(creditTextBox.Text));
                 //
                 // 直接向数据库中插入新数据后, dategridView不会更新, 需要fill一次更新bindSource
                 //

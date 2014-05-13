@@ -776,6 +776,8 @@ namespace 学籍管理系统 {
             
             private global::System.Data.DataColumn column备注;
             
+            private global::System.Data.DataColumn column总学分;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 学生信息表DataTable() {
@@ -923,6 +925,14 @@ namespace 学籍管理系统 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 总学分Column {
+                get {
+                    return this.column总学分;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -958,7 +968,7 @@ namespace 学籍管理系统 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public 学生信息表Row Add学生信息表Row(string 学号, string 姓名, string 性别, System.DateTime 出生日期, string 政治面貌, System.DateTime 入学日期, string 院系名, string 专业名, 班级信息表Row parent班级信息表RowBy班级号, string 电话号码, string 身份证号码, string 详细家庭住址, byte[] 照片, string 备注) {
+            public 学生信息表Row Add学生信息表Row(string 学号, string 姓名, string 性别, System.DateTime 出生日期, string 政治面貌, System.DateTime 入学日期, string 院系名, string 专业名, 班级信息表Row parent班级信息表RowBy班级号, string 电话号码, string 身份证号码, string 详细家庭住址, byte[] 照片, string 备注, int 总学分) {
                 学生信息表Row row学生信息表Row = ((学生信息表Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         学号,
@@ -974,7 +984,8 @@ namespace 学籍管理系统 {
                         身份证号码,
                         详细家庭住址,
                         照片,
-                        备注};
+                        备注,
+                        总学分};
                 if ((parent班级信息表RowBy班级号 != null)) {
                     columnValuesArray[8] = parent班级信息表RowBy班级号[0];
                 }
@@ -1021,6 +1032,7 @@ namespace 学籍管理系统 {
                 this.column详细家庭住址 = base.Columns["详细家庭住址"];
                 this.column照片 = base.Columns["照片"];
                 this.column备注 = base.Columns["备注"];
+                this.column总学分 = base.Columns["总学分"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1054,6 +1066,8 @@ namespace 学籍管理系统 {
                 base.Columns.Add(this.column照片);
                 this.column备注 = new global::System.Data.DataColumn("备注", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.column备注);
+                this.column总学分 = new global::System.Data.DataColumn("总学分", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column总学分);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.column学号}, true));
                 this.column学号.AllowDBNull = false;
@@ -1079,6 +1093,7 @@ namespace 学籍管理系统 {
                 this.column详细家庭住址.AllowDBNull = false;
                 this.column详细家庭住址.MaxLength = 45;
                 this.column备注.MaxLength = 45;
+                this.column总学分.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2393,6 +2408,17 @@ namespace 学籍管理系统 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int 总学分 {
+                get {
+                    return ((int)(this[this.table学生信息表.总学分Column]));
+                }
+                set {
+                    this[this.table学生信息表.总学分Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public 班级信息表Row 班级信息表Row {
                 get {
                     return ((班级信息表Row)(this.GetParentRow(this.Table.ParentRelations["班级号"])));
@@ -3498,10 +3524,11 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("详细家庭住址", "详细家庭住址");
             tableMapping.ColumnMappings.Add("照片", "照片");
             tableMapping.ColumnMappings.Add("备注", "备注");
+            tableMapping.ColumnMappings.Add("总学分", "总学分");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `学生信息表` WHERE ((`学号` = @p1) AND (`姓名` = @p2) AND (`性别` = @p3) AND (`出生日期` = @p4) AND ((@p5 = 1 AND `政治面貌` IS NULL) OR (`政治面貌` = @p6)) AND (`入学日期` = @p7) AND (`院系名` = @p8) AND (`专业名` = @p9) AND (`班级号` = @p10) AND (`电话号码` = @p11) AND (`身份证号码` = @p12) AND (`详细家庭住址` = @p13) AND ((@p14 = 1 AND `备注` IS NULL) OR (`备注` = @p15)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `学生信息表` WHERE ((`学号` = @p1) AND (`姓名` = @p2) AND (`性别` = @p3) AND (`出生日期` = @p4) AND (`政治面貌` = @p5) AND (`入学日期` = @p6) AND (`院系名` = @p7) AND (`专业名` = @p8) AND (`班级号` = @p9) AND (`电话号码` = @p10) AND (`身份证号码` = @p11) AND (`详细家庭住址` = @p12) AND ((@p13 = 1 AND `备注` IS NULL) OR (`备注` = @p14)) AND (`总学分` = @p15))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -3537,15 +3564,6 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p5";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "政治面貌";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3553,7 +3571,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
+            param.ParameterName = "@p6";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
@@ -3561,7 +3579,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3569,7 +3587,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3577,7 +3595,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p10";
+            param.ParameterName = "@p9";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3585,7 +3603,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p11";
+            param.ParameterName = "@p10";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3593,7 +3611,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p12";
+            param.ParameterName = "@p11";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3601,7 +3619,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p13";
+            param.ParameterName = "@p12";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3609,7 +3627,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p14";
+            param.ParameterName = "@p13";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -3618,18 +3636,26 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceColumnNullMapping = true;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p15";
+            param.ParameterName = "@p14";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
             param.SourceColumn = "备注";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p15";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "总学分";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.DeleteCommand.Parameters.Add(param);
             this._adapter.InsertCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO `学生信息表` (`学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号" +
-                "`, `电话号码`, `身份证号码`, `详细家庭住址`, `照片`, `备注`) VALUES (@p1, @p2, @p3, @p4, @p5, @p6, " +
-                "@p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14)";
+                "`, `电话号码`, `身份证号码`, `详细家庭住址`, `照片`, `备注`, `总学分`) VALUES (@p1, @p2, @p3, @p4, @p5" +
+                ", @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -3729,9 +3755,16 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.IsNullable = true;
             param.SourceColumn = "备注";
             this._adapter.InsertCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p15";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "总学分";
+            this._adapter.InsertCommand.Parameters.Add(param);
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `学生信息表` SET `学号` = @p1, `姓名` = @p2, `性别` = @p3, `出生日期` = @p4, `政治面貌` = @p5, `入学日期` = @p6, `院系名` = @p7, `专业名` = @p8, `班级号` = @p9, `电话号码` = @p10, `身份证号码` = @p11, `详细家庭住址` = @p12, `照片` = @p13, `备注` = @p14 WHERE ((`学号` = @p15) AND (`姓名` = @p16) AND (`性别` = @p17) AND (`出生日期` = @p18) AND ((@p19 = 1 AND `政治面貌` IS NULL) OR (`政治面貌` = @p20)) AND (`入学日期` = @p21) AND (`院系名` = @p22) AND (`专业名` = @p23) AND (`班级号` = @p24) AND (`电话号码` = @p25) AND (`身份证号码` = @p26) AND (`详细家庭住址` = @p27) AND ((@p28 = 1 AND `备注` IS NULL) OR (`备注` = @p29)))";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `学生信息表` SET `学号` = @p1, `姓名` = @p2, `性别` = @p3, `出生日期` = @p4, `政治面貌` = @p5, `入学日期` = @p6, `院系名` = @p7, `专业名` = @p8, `班级号` = @p9, `电话号码` = @p10, `身份证号码` = @p11, `详细家庭住址` = @p12, `照片` = @p13, `备注` = @p14, `总学分` = @p15 WHERE ((`学号` = @p16) AND (`姓名` = @p17) AND (`性别` = @p18) AND (`出生日期` = @p19) AND (`政治面貌` = @p20) AND (`入学日期` = @p21) AND (`院系名` = @p22) AND (`专业名` = @p23) AND (`班级号` = @p24) AND (`电话号码` = @p25) AND (`身份证号码` = @p26) AND (`详细家庭住址` = @p27) AND ((@p28 = 1 AND `备注` IS NULL) OR (`备注` = @p29)) AND (`总学分` = @p30))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -3833,6 +3866,13 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p15";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "总学分";
+            this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p16";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3840,7 +3880,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p16";
+            param.ParameterName = "@p17";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3848,7 +3888,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p17";
+            param.ParameterName = "@p18";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3856,21 +3896,12 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p18";
+            param.ParameterName = "@p19";
             param.DbType = global::System.Data.DbType.Date;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Date;
             param.IsNullable = true;
             param.SourceColumn = "出生日期";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p19";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "政治面貌";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p20";
@@ -3953,6 +3984,14 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceColumn = "备注";
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@p30";
+            param.DbType = global::System.Data.DbType.Int32;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
+            param.IsNullable = true;
+            param.SourceColumn = "总学分";
+            param.SourceVersion = global::System.Data.DataRowVersion.Original;
+            this._adapter.UpdateCommand.Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3968,13 +4007,13 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[8];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表`";
+            this._commandCollection[0].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where(班级号 = @classCode)";
+            this._commandCollection[1].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (班级号 = @classCode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@classCode";
@@ -3986,8 +4025,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (院系名 = @collegeName)";
+            this._commandCollection[2].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (院系名 = @collegeName)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@collegeName";
@@ -3999,8 +4038,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (政治面貌 = @politicalStatus)";
+            this._commandCollection[3].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (政治面貌 = @politicalStatus)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@politicalStatus";
@@ -4012,8 +4051,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[3].Parameters.Add(param);
             this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (专业名 = @professionName)";
+            this._commandCollection[4].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (专业名 = @professionName)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@professionName";
@@ -4025,8 +4064,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[4].Parameters.Add(param);
             this._commandCollection[5] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` WHERE (学号 = @studentID)";
+            this._commandCollection[5].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (学号 = @studentID)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@studentID";
@@ -4038,8 +4077,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT `学号`, `姓名`, `性别`, `出生日期`, `政治面貌`, `入学日期`, `院系名`, `专业名`, `班级号`, `电话号码`, `身份" +
-                "证号码`, `详细家庭住址`, `照片`, `备注` FROM `学生信息表` where (姓名 = @studentName)";
+            this._commandCollection[6].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
+                "总学分 FROM 学生信息表 WHERE (姓名 = @studentName)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@studentName";
@@ -4336,7 +4375,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, string p2, string p3, System.DateTime p4, string p6, System.DateTime p7, string p8, string p9, string p10, string p11, string p12, string p13, string p15) {
+        public virtual int Delete(string p1, string p2, string p3, System.DateTime p4, string p5, System.DateTime p6, string p7, string p8, string p9, string p10, string p11, string p12, string p14, int p15) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -4356,15 +4395,19 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
             }
             this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(p4));
-            if ((p6 == null)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            if ((p5 == null)) {
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(p6));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(p5));
             }
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(p7));
+            this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(p6));
+            if ((p7 == null)) {
+                throw new global::System.ArgumentNullException("p7");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(p7));
+            }
             if ((p8 == null)) {
                 throw new global::System.ArgumentNullException("p8");
             }
@@ -4395,20 +4438,15 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(p12));
             }
-            if ((p13 == null)) {
-                throw new global::System.ArgumentNullException("p13");
+            if ((p14 == null)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(p13));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((string)(p14));
             }
-            if ((p15 == null)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(p15));
-            }
+            this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(p15));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4429,7 +4467,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string p1, string p2, string p3, System.DateTime p4, string p5, System.DateTime p6, string p7, string p8, string p9, string p10, string p11, string p12, object p13, string p14) {
+        public virtual int Insert(string p1, string p2, string p3, System.DateTime p4, string p5, System.DateTime p6, string p7, string p8, string p9, string p10, string p11, string p12, object p13, string p14, int p15) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -4450,7 +4488,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             }
             this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(p4));
             if ((p5 == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(p5));
@@ -4504,6 +4542,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = ((string)(p14));
             }
+            this.Adapter.InsertCommand.Parameters[14].Value = ((int)(p15));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4539,10 +4578,11 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                     string p12, 
                     object p13, 
                     string p14, 
-                    string p15, 
+                    int p15, 
                     string p16, 
                     string p17, 
-                    System.DateTime p18, 
+                    string p18, 
+                    System.DateTime p19, 
                     string p20, 
                     System.DateTime p21, 
                     string p22, 
@@ -4551,7 +4591,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                     string p25, 
                     string p26, 
                     string p27, 
-                    string p29) {
+                    string p29, 
+                    int p30) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -4572,7 +4613,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             }
             this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(p4));
             if ((p5 == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("p5");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p5));
@@ -4626,12 +4667,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(p14));
             }
-            if ((p15 == null)) {
-                throw new global::System.ArgumentNullException("p15");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(p15));
-            }
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(p15));
             if ((p16 == null)) {
                 throw new global::System.ArgumentNullException("p16");
             }
@@ -4644,13 +4680,17 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(p17));
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(p18));
-            if ((p20 == null)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            if ((p18 == null)) {
+                throw new global::System.ArgumentNullException("p18");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(p18));
+            }
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(p19));
+            if ((p20 == null)) {
+                throw new global::System.ArgumentNullException("p20");
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(p20));
             }
             this.Adapter.UpdateCommand.Parameters[20].Value = ((System.DateTime)(p21));
@@ -4698,6 +4738,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(p29));
             }
+            this.Adapter.UpdateCommand.Parameters[29].Value = ((int)(p30));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4732,10 +4773,11 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                     string p12, 
                     object p13, 
                     string p14, 
-                    string p15, 
+                    int p15, 
                     string p16, 
                     string p17, 
-                    System.DateTime p18, 
+                    string p18, 
+                    System.DateTime p19, 
                     string p20, 
                     System.DateTime p21, 
                     string p22, 
@@ -4744,8 +4786,9 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                     string p25, 
                     string p26, 
                     string p27, 
-                    string p29) {
-            return this.Update(p15, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p20, p21, p22, p23, p24, p25, p26, p27, p29);
+                    string p29, 
+                    int p30) {
+            return this.Update(p16, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p29, p30);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
