@@ -41,6 +41,7 @@
             System.Windows.Forms.Label 电话号码Label;
             System.Windows.Forms.Label 身份证号码Label;
             System.Windows.Forms.Label 详细家庭住址Label;
+            System.Windows.Forms.Label 总学分Label;
             this.label11 = new System.Windows.Forms.Label();
             this.学生信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
@@ -67,9 +68,9 @@
             this.照片PictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
-            this.label13 = new System.Windows.Forms.Label();
+            this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
+            this.总学分Label1 = new System.Windows.Forms.Label();
             学号Label = new System.Windows.Forms.Label();
             姓名Label = new System.Windows.Forms.Label();
             性别Label = new System.Windows.Forms.Label();
@@ -82,16 +83,16 @@
             电话号码Label = new System.Windows.Forms.Label();
             身份证号码Label = new System.Windows.Forms.Label();
             详细家庭住址Label = new System.Windows.Forms.Label();
+            总学分Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.照片PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // 学号Label
             // 
             学号Label.AutoSize = true;
-            学号Label.Location = new System.Drawing.Point(274, 58);
+            学号Label.Location = new System.Drawing.Point(225, 58);
             学号Label.Name = "学号Label";
             学号Label.Size = new System.Drawing.Size(35, 12);
             学号Label.TabIndex = 79;
@@ -109,7 +110,7 @@
             // 性别Label
             // 
             性别Label.AutoSize = true;
-            性别Label.Location = new System.Drawing.Point(276, 30);
+            性别Label.Location = new System.Drawing.Point(227, 30);
             性别Label.Name = "性别Label";
             性别Label.Size = new System.Drawing.Size(35, 12);
             性别Label.TabIndex = 81;
@@ -145,7 +146,7 @@
             // 院系名Label
             // 
             院系名Label.AutoSize = true;
-            院系名Label.Location = new System.Drawing.Point(274, 86);
+            院系名Label.Location = new System.Drawing.Point(225, 86);
             院系名Label.Name = "院系名Label";
             院系名Label.Size = new System.Drawing.Size(47, 12);
             院系名Label.TabIndex = 85;
@@ -154,7 +155,7 @@
             // 专业名Label
             // 
             专业名Label.AutoSize = true;
-            专业名Label.Location = new System.Drawing.Point(274, 114);
+            专业名Label.Location = new System.Drawing.Point(225, 114);
             专业名Label.Name = "专业名Label";
             专业名Label.Size = new System.Drawing.Size(47, 12);
             专业名Label.TabIndex = 86;
@@ -163,7 +164,7 @@
             // 班级号Label
             // 
             班级号Label.AutoSize = true;
-            班级号Label.Location = new System.Drawing.Point(274, 142);
+            班级号Label.Location = new System.Drawing.Point(225, 142);
             班级号Label.Name = "班级号Label";
             班级号Label.Size = new System.Drawing.Size(47, 12);
             班级号Label.TabIndex = 87;
@@ -190,7 +191,7 @@
             // 详细家庭住址Label
             // 
             详细家庭住址Label.AutoSize = true;
-            详细家庭住址Label.Location = new System.Drawing.Point(274, 170);
+            详细家庭住址Label.Location = new System.Drawing.Point(225, 170);
             详细家庭住址Label.Name = "详细家庭住址Label";
             详细家庭住址Label.Size = new System.Drawing.Size(35, 36);
             详细家庭住址Label.TabIndex = 90;
@@ -200,7 +201,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "专业名", true));
-            this.label11.Location = new System.Drawing.Point(327, 114);
+            this.label11.Location = new System.Drawing.Point(278, 114);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 106;
@@ -220,7 +221,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "班级号", true));
-            this.label10.Location = new System.Drawing.Point(327, 142);
+            this.label10.Location = new System.Drawing.Point(278, 142);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 105;
@@ -230,7 +231,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "详细家庭住址", true));
-            this.label9.Location = new System.Drawing.Point(327, 170);
+            this.label9.Location = new System.Drawing.Point(278, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 104;
@@ -270,7 +271,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "院系名", true));
-            this.label7.Location = new System.Drawing.Point(327, 86);
+            this.label7.Location = new System.Drawing.Point(278, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 100;
@@ -363,7 +364,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "性别", true));
-            this.label1.Location = new System.Drawing.Point(327, 30);
+            this.label1.Location = new System.Drawing.Point(278, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 97;
@@ -372,7 +373,7 @@
             // studentPictureLabel
             // 
             this.studentPictureLabel.AutoSize = true;
-            this.studentPictureLabel.Location = new System.Drawing.Point(512, 185);
+            this.studentPictureLabel.Location = new System.Drawing.Point(379, 224);
             this.studentPictureLabel.Name = "studentPictureLabel";
             this.studentPictureLabel.Size = new System.Drawing.Size(29, 12);
             this.studentPictureLabel.TabIndex = 93;
@@ -390,9 +391,9 @@
             this.照片PictureBox.BackColor = System.Drawing.Color.Transparent;
             this.照片PictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.照片PictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.学生信息表BindingSource, "照片", true));
-            this.照片PictureBox.Location = new System.Drawing.Point(512, 12);
+            this.照片PictureBox.Location = new System.Drawing.Point(381, 12);
             this.照片PictureBox.Name = "照片PictureBox";
-            this.照片PictureBox.Size = new System.Drawing.Size(130, 157);
+            this.照片PictureBox.Size = new System.Drawing.Size(141, 209);
             this.照片PictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.照片PictureBox.TabIndex = 91;
             this.照片PictureBox.TabStop = false;
@@ -411,41 +412,52 @@
             // 
             this.label12.AutoSize = true;
             this.label12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "学号", true));
-            this.label12.Location = new System.Drawing.Point(327, 58);
+            this.label12.Location = new System.Drawing.Point(278, 58);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(41, 12);
             this.label12.TabIndex = 100;
             this.label12.Text = "label2";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 239);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(679, 376);
-            this.dataGridView1.TabIndex = 107;
-            // 
             // 学生信息表TableAdapter
             // 
             this.学生信息表TableAdapter.ClearBeforeFill = true;
             // 
-            // label13
+            // tableAdapterManager
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 221);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 108;
-            this.label13.Text = "成绩信息";
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.UpdateOrder = 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.专业信息表TableAdapter = null;
+            this.tableAdapterManager.学校信息表TableAdapter = null;
+            this.tableAdapterManager.学生信息表TableAdapter = this.学生信息表TableAdapter;
+            this.tableAdapterManager.班级信息表TableAdapter = null;
+            this.tableAdapterManager.账户信息表TableAdapter = null;
+            // 
+            // 总学分Label
+            // 
+            总学分Label.AutoSize = true;
+            总学分Label.Location = new System.Drawing.Point(39, 224);
+            总学分Label.Name = "总学分Label";
+            总学分Label.Size = new System.Drawing.Size(47, 12);
+            总学分Label.TabIndex = 106;
+            总学分Label.Text = "总学分:";
+            // 
+            // 总学分Label1
+            // 
+            this.总学分Label1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.学生信息表BindingSource, "总学分", true));
+            this.总学分Label1.Location = new System.Drawing.Point(112, 224);
+            this.总学分Label1.Name = "总学分Label1";
+            this.总学分Label1.Size = new System.Drawing.Size(100, 23);
+            this.总学分Label1.TabIndex = 107;
+            this.总学分Label1.Text = "label13";
             // 
             // StudentInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 617);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.dataGridView1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(554, 333);
+            this.Controls.Add(总学分Label);
+            this.Controls.Add(this.总学分Label1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -479,7 +491,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.照片PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,10 +522,10 @@
         private System.Windows.Forms.PictureBox 照片PictureBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter 学生信息表TableAdapter;
         private System.Windows.Forms.BindingSource 学生信息表BindingSource;
         private studentinfomanagedatabaseDataSet studentinfomanagedatabaseDataSet;
-        private System.Windows.Forms.Label label13;
+        private studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.Label 总学分Label1;
     }
 }

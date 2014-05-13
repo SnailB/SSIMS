@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadForm));
             this.label1 = new System.Windows.Forms.Label();
             this.accountName = new System.Windows.Forms.TextBox();
             this.passwd = new System.Windows.Forms.TextBox();
@@ -38,9 +37,9 @@
             this.userLabel = new System.Windows.Forms.Label();
             this.pwdLabel = new System.Windows.Forms.Label();
             this.errorInfo = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorInfoLabel = new System.Windows.Forms.Label();
             this.账户信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
-            this.errorInfoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).BeginInit();
@@ -123,16 +122,6 @@
             // 
             this.errorInfo.ContainerControl = this;
             // 
-            // 账户信息表BindingSource
-            // 
-            this.账户信息表BindingSource.DataMember = "账户信息表";
-            this.账户信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
-            // studentinfomanagedatabaseDataSet
-            // 
-            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
-            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // errorInfoLabel
             // 
             this.errorInfoLabel.AutoSize = true;
@@ -143,12 +132,21 @@
             this.errorInfoLabel.Size = new System.Drawing.Size(0, 12);
             this.errorInfoLabel.TabIndex = 7;
             // 
+            // 账户信息表BindingSource
+            // 
+            this.账户信息表BindingSource.DataMember = "账户信息表";
+            this.账户信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
+            // studentinfomanagedatabaseDataSet
+            // 
+            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
+            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // loadForm
             // 
             this.AcceptButton = this.loadButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(724, 454);
             this.Controls.Add(this.errorInfoLabel);
