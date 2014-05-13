@@ -48,6 +48,9 @@
             System.Windows.Forms.Label 账户权限Label;
             this.schoolTabControl = new System.Windows.Forms.TabControl();
             this.schoolTabPage = new System.Windows.Forms.TabPage();
+            this.updateClassInfoButton = new System.Windows.Forms.Button();
+            this.updateProfessionInfoButton = new System.Windows.Forms.Button();
+            this.updateCollegeInfoButton = new System.Windows.Forms.Button();
             this.refresh = new System.Windows.Forms.Button();
             this.collegeCodeQueryButton = new System.Windows.Forms.Button();
             this.collegeInfoAddButton = new System.Windows.Forms.Button();
@@ -60,14 +63,16 @@
             this.classInfoAddButton = new System.Windows.Forms.Button();
             this.classCodeLabel = new System.Windows.Forms.Label();
             this.classCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.班级信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
             this.classLabel = new System.Windows.Forms.Label();
             this.classComboBox = new System.Windows.Forms.ComboBox();
             this.professionCodeLabel = new System.Windows.Forms.Label();
             this.professionCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.专业信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.collegeCodeLabel = new System.Windows.Forms.Label();
             this.collegeCodeComboBox = new System.Windows.Forms.ComboBox();
             this.学校信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
             this.professionLabel = new System.Windows.Forms.Label();
             this.professionComboBox = new System.Windows.Forms.ComboBox();
             this.collegeLabel = new System.Windows.Forms.Label();
@@ -127,15 +132,13 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exitSystemLable = new System.Windows.Forms.Label();
             this.学校信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学校信息表TableAdapter();
             this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
             this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
             this.账户信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.账户信息表TableAdapter();
             this.专业信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.专业信息表TableAdapter();
-            this.专业信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.班级信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.班级信息表TableAdapter();
-            this.班级信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.exitSystemLable = new System.Windows.Forms.Label();
             学号Label = new System.Windows.Forms.Label();
             姓名Label = new System.Windows.Forms.Label();
             性别Label = new System.Windows.Forms.Label();
@@ -155,8 +158,10 @@
             账户权限Label = new System.Windows.Forms.Label();
             this.schoolTabControl.SuspendLayout();
             this.schoolTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeTableDataGridView)).BeginInit();
             this.studentTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).BeginInit();
@@ -165,8 +170,6 @@
             this.accountTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 学号Label
@@ -336,6 +339,9 @@
             // 
             // schoolTabPage
             // 
+            this.schoolTabPage.Controls.Add(this.updateClassInfoButton);
+            this.schoolTabPage.Controls.Add(this.updateProfessionInfoButton);
+            this.schoolTabPage.Controls.Add(this.updateCollegeInfoButton);
             this.schoolTabPage.Controls.Add(this.refresh);
             this.schoolTabPage.Controls.Add(this.collegeCodeQueryButton);
             this.schoolTabPage.Controls.Add(this.collegeInfoAddButton);
@@ -367,18 +373,49 @@
             this.schoolTabPage.Text = "学校信息管理";
             this.schoolTabPage.UseVisualStyleBackColor = true;
             // 
+            // updateClassInfoButton
+            // 
+            this.updateClassInfoButton.Location = new System.Drawing.Point(341, 110);
+            this.updateClassInfoButton.Name = "updateClassInfoButton";
+            this.updateClassInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.updateClassInfoButton.TabIndex = 26;
+            this.updateClassInfoButton.Text = "更新";
+            this.updateClassInfoButton.UseVisualStyleBackColor = true;
+            this.updateClassInfoButton.Click += new System.EventHandler(this.updateClassInfoButton_Click);
+            // 
+            // updateProfessionInfoButton
+            // 
+            this.updateProfessionInfoButton.Location = new System.Drawing.Point(341, 58);
+            this.updateProfessionInfoButton.Name = "updateProfessionInfoButton";
+            this.updateProfessionInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.updateProfessionInfoButton.TabIndex = 26;
+            this.updateProfessionInfoButton.Text = "更新";
+            this.updateProfessionInfoButton.UseVisualStyleBackColor = true;
+            this.updateProfessionInfoButton.Click += new System.EventHandler(this.updateProfessionInfoButton_Click);
+            // 
+            // updateCollegeInfoButton
+            // 
+            this.updateCollegeInfoButton.Location = new System.Drawing.Point(341, 6);
+            this.updateCollegeInfoButton.Name = "updateCollegeInfoButton";
+            this.updateCollegeInfoButton.Size = new System.Drawing.Size(75, 23);
+            this.updateCollegeInfoButton.TabIndex = 26;
+            this.updateCollegeInfoButton.Text = "更新";
+            this.updateCollegeInfoButton.UseVisualStyleBackColor = true;
+            this.updateCollegeInfoButton.Click += new System.EventHandler(this.updateCollegeInfoButton_Click);
+            // 
             // refresh
             // 
-            this.refresh.Location = new System.Drawing.Point(565, 28);
+            this.refresh.Location = new System.Drawing.Point(593, 7);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(75, 23);
             this.refresh.TabIndex = 25;
             this.refresh.Text = "刷新";
             this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // collegeCodeQueryButton
             // 
-            this.collegeCodeQueryButton.Location = new System.Drawing.Point(341, 28);
+            this.collegeCodeQueryButton.Location = new System.Drawing.Point(341, 29);
             this.collegeCodeQueryButton.Name = "collegeCodeQueryButton";
             this.collegeCodeQueryButton.Size = new System.Drawing.Size(75, 23);
             this.collegeCodeQueryButton.TabIndex = 24;
@@ -388,7 +425,7 @@
             // 
             // collegeInfoAddButton
             // 
-            this.collegeInfoAddButton.Location = new System.Drawing.Point(438, 29);
+            this.collegeInfoAddButton.Location = new System.Drawing.Point(422, 29);
             this.collegeInfoAddButton.Name = "collegeInfoAddButton";
             this.collegeInfoAddButton.Size = new System.Drawing.Size(75, 23);
             this.collegeInfoAddButton.TabIndex = 23;
@@ -398,7 +435,7 @@
             // 
             // collegeInfoDeleteButton
             // 
-            this.collegeInfoDeleteButton.Location = new System.Drawing.Point(438, 6);
+            this.collegeInfoDeleteButton.Location = new System.Drawing.Point(422, 6);
             this.collegeInfoDeleteButton.Name = "collegeInfoDeleteButton";
             this.collegeInfoDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.collegeInfoDeleteButton.TabIndex = 22;
@@ -408,7 +445,7 @@
             // 
             // professionInfoAddButton
             // 
-            this.professionInfoAddButton.Location = new System.Drawing.Point(438, 81);
+            this.professionInfoAddButton.Location = new System.Drawing.Point(422, 81);
             this.professionInfoAddButton.Name = "professionInfoAddButton";
             this.professionInfoAddButton.Size = new System.Drawing.Size(75, 23);
             this.professionInfoAddButton.TabIndex = 21;
@@ -418,7 +455,7 @@
             // 
             // professionInfoDeleteButton
             // 
-            this.professionInfoDeleteButton.Location = new System.Drawing.Point(438, 58);
+            this.professionInfoDeleteButton.Location = new System.Drawing.Point(422, 58);
             this.professionInfoDeleteButton.Name = "professionInfoDeleteButton";
             this.professionInfoDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.professionInfoDeleteButton.TabIndex = 20;
@@ -428,7 +465,7 @@
             // 
             // professionCodeQueryButton
             // 
-            this.professionCodeQueryButton.Location = new System.Drawing.Point(341, 79);
+            this.professionCodeQueryButton.Location = new System.Drawing.Point(341, 81);
             this.professionCodeQueryButton.Name = "professionCodeQueryButton";
             this.professionCodeQueryButton.Size = new System.Drawing.Size(75, 23);
             this.professionCodeQueryButton.TabIndex = 19;
@@ -438,7 +475,7 @@
             // 
             // classInfoDeleteButton
             // 
-            this.classInfoDeleteButton.Location = new System.Drawing.Point(438, 110);
+            this.classInfoDeleteButton.Location = new System.Drawing.Point(422, 110);
             this.classInfoDeleteButton.Name = "classInfoDeleteButton";
             this.classInfoDeleteButton.Size = new System.Drawing.Size(75, 23);
             this.classInfoDeleteButton.TabIndex = 18;
@@ -448,7 +485,7 @@
             // 
             // classCodeQueryButton
             // 
-            this.classCodeQueryButton.Location = new System.Drawing.Point(339, 131);
+            this.classCodeQueryButton.Location = new System.Drawing.Point(341, 133);
             this.classCodeQueryButton.Name = "classCodeQueryButton";
             this.classCodeQueryButton.Size = new System.Drawing.Size(75, 23);
             this.classCodeQueryButton.TabIndex = 17;
@@ -458,7 +495,7 @@
             // 
             // classInfoAddButton
             // 
-            this.classInfoAddButton.Location = new System.Drawing.Point(438, 133);
+            this.classInfoAddButton.Location = new System.Drawing.Point(422, 133);
             this.classInfoAddButton.Name = "classInfoAddButton";
             this.classInfoAddButton.Size = new System.Drawing.Size(75, 23);
             this.classInfoAddButton.TabIndex = 15;
@@ -482,6 +519,16 @@
             this.classCodeComboBox.Name = "classCodeComboBox";
             this.classCodeComboBox.Size = new System.Drawing.Size(87, 20);
             this.classCodeComboBox.TabIndex = 13;
+            // 
+            // 班级信息表BindingSource
+            // 
+            this.班级信息表BindingSource.DataMember = "班级信息表";
+            this.班级信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
+            // studentinfomanagedatabaseDataSet
+            // 
+            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
+            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // classLabel
             // 
@@ -517,6 +564,11 @@
             this.professionCodeComboBox.Size = new System.Drawing.Size(87, 20);
             this.professionCodeComboBox.TabIndex = 9;
             // 
+            // 专业信息表BindingSource
+            // 
+            this.专业信息表BindingSource.DataMember = "专业信息表";
+            this.专业信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
             // collegeCodeLabel
             // 
             this.collegeCodeLabel.AutoSize = true;
@@ -540,11 +592,6 @@
             // 
             this.学校信息表BindingSource.DataMember = "学校信息表";
             this.学校信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
-            // studentinfomanagedatabaseDataSet
-            // 
-            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
-            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // professionLabel
             // 
@@ -1161,17 +1208,6 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 200;
             // 
-            // exitSystemLable
-            // 
-            this.exitSystemLable.AutoSize = true;
-            this.exitSystemLable.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.exitSystemLable.Location = new System.Drawing.Point(594, 43);
-            this.exitSystemLable.Name = "exitSystemLable";
-            this.exitSystemLable.Size = new System.Drawing.Size(85, 19);
-            this.exitSystemLable.TabIndex = 1;
-            this.exitSystemLable.Text = "退出系统";
-            this.exitSystemLable.Click += new System.EventHandler(this.exitSystemLable_Click);
-            // 
             // 学校信息表TableAdapter
             // 
             this.学校信息表TableAdapter.ClearBeforeFill = true;
@@ -1198,19 +1234,20 @@
             // 
             this.专业信息表TableAdapter.ClearBeforeFill = true;
             // 
-            // 专业信息表BindingSource
-            // 
-            this.专业信息表BindingSource.DataMember = "专业信息表";
-            this.专业信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
             // 班级信息表TableAdapter
             // 
             this.班级信息表TableAdapter.ClearBeforeFill = true;
             // 
-            // 班级信息表BindingSource
+            // exitSystemLable
             // 
-            this.班级信息表BindingSource.DataMember = "班级信息表";
-            this.班级信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            this.exitSystemLable.AutoSize = true;
+            this.exitSystemLable.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.exitSystemLable.Location = new System.Drawing.Point(594, 43);
+            this.exitSystemLable.Name = "exitSystemLable";
+            this.exitSystemLable.Size = new System.Drawing.Size(85, 19);
+            this.exitSystemLable.TabIndex = 1;
+            this.exitSystemLable.Text = "退出系统";
+            this.exitSystemLable.Click += new System.EventHandler(this.exitSystemLable_Click);
             // 
             // AdminForm
             // 
@@ -1219,16 +1256,16 @@
             this.ClientSize = new System.Drawing.Size(684, 617);
             this.Controls.Add(this.exitSystemLable);
             this.Controls.Add(this.schoolTabControl);
-            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Name = "AdminForm";
             this.Text = "学籍管理系统管理后台";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.schoolTabControl.ResumeLayout(false);
             this.schoolTabPage.ResumeLayout(false);
             this.schoolTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeTableDataGridView)).EndInit();
             this.studentTabPage.ResumeLayout(false);
             this.studentTabPage.PerformLayout();
@@ -1239,8 +1276,6 @@
             this.accountTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1252,7 +1287,6 @@
         private System.Windows.Forms.TabPage schoolTabPage;
         private System.Windows.Forms.TabPage studentTabPage;
         private System.Windows.Forms.TabPage accountTabPage;
-        private System.Windows.Forms.Label exitSystemLable;
         private System.Windows.Forms.Label collegeLabel;
         private System.Windows.Forms.ComboBox collegeComboBox;
         private studentinfomanagedatabaseDataSet studentinfomanagedatabaseDataSet;
@@ -1338,5 +1372,9 @@
         private System.Windows.Forms.BindingSource 专业信息表BindingSource;
         private studentinfomanagedatabaseDataSetTableAdapters.班级信息表TableAdapter 班级信息表TableAdapter;
         private System.Windows.Forms.BindingSource 班级信息表BindingSource;
+        private System.Windows.Forms.Button updateCollegeInfoButton;
+        private System.Windows.Forms.Button updateClassInfoButton;
+        private System.Windows.Forms.Button updateProfessionInfoButton;
+        private System.Windows.Forms.Label exitSystemLable;
     }
 }
