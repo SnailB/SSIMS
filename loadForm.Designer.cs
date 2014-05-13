@@ -77,7 +77,8 @@
             // 
             // loadButton
             // 
-            this.loadButton.Location = new System.Drawing.Point(290, 280);
+            this.loadButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.loadButton.Location = new System.Drawing.Point(290, 252);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(75, 23);
             this.loadButton.TabIndex = 3;
@@ -87,7 +88,8 @@
             // 
             // regesitButton
             // 
-            this.regesitButton.Location = new System.Drawing.Point(385, 280);
+            this.regesitButton.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.regesitButton.Location = new System.Drawing.Point(385, 252);
             this.regesitButton.Name = "regesitButton";
             this.regesitButton.Size = new System.Drawing.Size(75, 23);
             this.regesitButton.TabIndex = 4;
@@ -100,7 +102,7 @@
             this.userLabel.AutoSize = true;
             this.userLabel.BackColor = System.Drawing.Color.Transparent;
             this.userLabel.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.userLabel.Location = new System.Drawing.Point(213, 176);
+            this.userLabel.Location = new System.Drawing.Point(214, 173);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(70, 24);
             this.userLabel.TabIndex = 5;
@@ -111,7 +113,7 @@
             this.pwdLabel.AutoSize = true;
             this.pwdLabel.BackColor = System.Drawing.Color.Transparent;
             this.pwdLabel.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pwdLabel.Location = new System.Drawing.Point(213, 221);
+            this.pwdLabel.Location = new System.Drawing.Point(214, 215);
             this.pwdLabel.Name = "pwdLabel";
             this.pwdLabel.Size = new System.Drawing.Size(70, 24);
             this.pwdLabel.TabIndex = 6;

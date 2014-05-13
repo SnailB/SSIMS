@@ -35,6 +35,7 @@ namespace 学籍管理系统
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.账户信息表”中。您可以根据需要移动或删除它。
             this.账户信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.账户信息表);
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
@@ -140,7 +141,7 @@ namespace 学籍管理系统
             // 初始化汇总信息表
             string totalTableSelectQuery = "select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 " +
                                             "from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 " +
-                                            "join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 " + 
+                                            "join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 " +
                                             "left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS '班级人数' " +
                                             "FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号";
             myCommand = myConnection.CreateCommand();
@@ -325,10 +326,43 @@ namespace 学籍管理系统
 
         private void addStudentInfoButton_Click(object sender, EventArgs e)
         {
+            MyException myError;
             try
             {
                 this.Validate();
                 this.学生信息表BindingSource.EndEdit();
+
+
+                #region 定义一些约束检查
+                //
+                // 找到当前输入专业名的专业代码
+                // 
+                DataRowCollection professionTableRows = 专业信息表TableAdapter.GetDataByProfessionName(专业名TextBox.Text).Rows;
+                if (professionTableRows.Count != 0)
+                {
+                    // 获取代码字符串
+                    string professionCode;
+                    professionCode = professionTableRows[0]["专业代码"].ToString();
+                    // 找到当前专业代码的班级号集合
+                    DataRowCollection classTableRows = 班级信息表TableAdapter.GetDataByProfessionCode(professionCode).Rows;
+                    if (!classTableRows.Contains(班级号TextBox.Text))
+                    {
+                        myError = new MyException(班级号TextBox.Text + "在该专业不存在, 请重新输入");
+                        throw myError;
+                    }
+                }
+                else
+                {
+                    myError = new MyException(专业名TextBox.Text + "不存在, 请重新输入");
+                    throw myError;
+                }
+
+                if (!(性别TextBox.Text.Equals("男") || 性别TextBox.Text.Equals("女")))
+                {
+                    myError = new MyException( "性别: " + 性别TextBox.Text + "不存在, 请重新输入");
+                    throw myError;
+                }
+                #endregion
 
                 学生信息表TableAdapter.Insert(学号TextBox.Text, 姓名TextBox.Text, 性别TextBox.Text, 出生日期DateTimePicker.Value,
                     政治面貌TextBox.Text, 入学时间DateTimePicker.Value, 院系名TextBox.Text, 专业名TextBox.Text, 班级号TextBox.Text,
@@ -341,7 +375,7 @@ namespace 学籍管理系统
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show("Add failed:" + ex.Message, "错误",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Add failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -386,7 +420,7 @@ namespace 学籍管理系统
 
         private void deleteStudentInfoButton_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 var reasult = MessageBox.Show("是否删除选中行数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -468,7 +502,7 @@ namespace 学籍管理系统
                 this.Validate();
                 this.账户信息表BindingSource.EndEdit();
 
-                账户信息表TableAdapter.Insert(账户名TextBox.Text,账户密码TextBox.Text, 账户类别TextBox.Text, int.Parse(账户权限TextBox.Text));
+                账户信息表TableAdapter.Insert(账户名TextBox.Text, 账户密码TextBox.Text, 账户类别TextBox.Text, int.Parse(账户权限TextBox.Text));
                 //
                 // 直接向数据库中插入新数据后, dategridView不会更新, 需要fill一次更新bindSource
                 //
@@ -505,5 +539,14 @@ namespace 学籍管理系统
                 MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void exitSystemLable_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+    public class MyException : ApplicationException
+    {
+        public MyException(string message) : base(message) { }
     }
 }

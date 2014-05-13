@@ -132,6 +132,10 @@
             this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
             this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
             this.账户信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.账户信息表TableAdapter();
+            this.专业信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.专业信息表TableAdapter();
+            this.专业信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.班级信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.班级信息表TableAdapter();
+            this.班级信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             学号Label = new System.Windows.Forms.Label();
             姓名Label = new System.Windows.Forms.Label();
             性别Label = new System.Windows.Forms.Label();
@@ -161,6 +165,8 @@
             this.accountTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 学号Label
@@ -1164,6 +1170,7 @@
             this.exitSystemLable.Size = new System.Drawing.Size(85, 19);
             this.exitSystemLable.TabIndex = 1;
             this.exitSystemLable.Text = "退出系统";
+            this.exitSystemLable.Click += new System.EventHandler(this.exitSystemLable_Click);
             // 
             // 学校信息表TableAdapter
             // 
@@ -1187,6 +1194,24 @@
             // 
             this.账户信息表TableAdapter.ClearBeforeFill = true;
             // 
+            // 专业信息表TableAdapter
+            // 
+            this.专业信息表TableAdapter.ClearBeforeFill = true;
+            // 
+            // 专业信息表BindingSource
+            // 
+            this.专业信息表BindingSource.DataMember = "专业信息表";
+            this.专业信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
+            // 班级信息表TableAdapter
+            // 
+            this.班级信息表TableAdapter.ClearBeforeFill = true;
+            // 
+            // 班级信息表BindingSource
+            // 
+            this.班级信息表BindingSource.DataMember = "班级信息表";
+            this.班级信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1194,8 +1219,10 @@
             this.ClientSize = new System.Drawing.Size(684, 617);
             this.Controls.Add(this.exitSystemLable);
             this.Controls.Add(this.schoolTabControl);
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Name = "AdminForm";
             this.Text = "学籍管理系统管理后台";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.schoolTabControl.ResumeLayout(false);
             this.schoolTabPage.ResumeLayout(false);
@@ -1212,6 +1239,8 @@
             this.accountTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1305,5 +1334,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private studentinfomanagedatabaseDataSetTableAdapters.专业信息表TableAdapter 专业信息表TableAdapter;
+        private System.Windows.Forms.BindingSource 专业信息表BindingSource;
+        private studentinfomanagedatabaseDataSetTableAdapters.班级信息表TableAdapter 班级信息表TableAdapter;
+        private System.Windows.Forms.BindingSource 班级信息表BindingSource;
     }
 }
