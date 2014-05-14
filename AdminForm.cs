@@ -20,6 +20,7 @@ namespace 学籍管理系统
         DataTable myDataTable;
         BindingSource professionBindingSource = new BindingSource();
         BindingSource classBindingSource = new BindingSource();
+        BindingSource collegeBindingSource = new BindingSource();
         BindingSource tableBindingSource = new BindingSource();
         public AdminForm()
         {
@@ -262,7 +263,10 @@ namespace 学籍管理系统
 
                 DataTable myDataTable = new DataTable();
                 myAdapter.Fill(myDataTable);
-                myBindingSource.DataSource = myDataTable;
+                if (myBindingSource != 学校信息表BindingSource)
+                {
+                    myBindingSource.DataSource = myDataTable;
+                }
             }
             catch (System.Exception ex)
             {
@@ -358,7 +362,10 @@ namespace 学籍管理系统
             }
             if (collegeCodeComboBox.Text != string.Empty)
             {
-                DeleteOneRecord(学校信息表BindingSource, "学校信息表", "院系编号", collegeCodeComboBox.Text);
+                this.Validate();
+                学校信息表BindingSource.RemoveCurrent();
+                学校信息表BindingSource.EndEdit();
+                学校信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.学校信息表);
             }
 
         }
@@ -418,9 +425,7 @@ namespace 学籍管理系统
             addCommand.Parameters.AddWithValue("@collegeCode", collegeCodeComboBox.Text);
             addCommand.Parameters.AddWithValue("@collegeName", collegeComboBox.Text);
             addCommand.Parameters.AddWithValue("@professionCountOfCollege", 0);
-            MessageBox.Show(addCommand.CommandText);
             AddOneRecord(addCommand);
-
         }
         /// <summary>
         /// 用于学校信息管理panel的刷新
