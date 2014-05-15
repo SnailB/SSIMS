@@ -36,8 +36,7 @@ namespace 学籍管理系统
             DataRowCollection professionTableRows = 专业信息表TableAdapter.GetDataByProfessionName(专业名ComboBox.Text).Rows;
             if (professionTableRows.Count != 0)
             {
-                string professionCode;
-                professionCode = professionTableRows[0]["专业代码"].ToString();
+                string professionCode = professionTableRows[0]["专业代码"].ToString();
                 班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCode);
             }
             else
