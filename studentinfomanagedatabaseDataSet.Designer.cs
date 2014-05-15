@@ -34,11 +34,17 @@ namespace 学籍管理系统 {
         
         private 专业信息表DataTable table专业信息表;
         
+        private 汇总学校信息表DataTable table汇总学校信息表;
+        
         private global::System.Data.DataRelation relation专业代码;
         
         private global::System.Data.DataRelation relation班级号;
         
         private global::System.Data.DataRelation relation院系编号;
+        
+        private global::System.Data.DataRelation relation专业代码1;
+        
+        private global::System.Data.DataRelation relation院系编号1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -82,6 +88,9 @@ namespace 学籍管理系统 {
                 }
                 if ((ds.Tables["专业信息表"] != null)) {
                     base.Tables.Add(new 专业信息表DataTable(ds.Tables["专业信息表"]));
+                }
+                if ((ds.Tables["汇总学校信息表"] != null)) {
+                    base.Tables.Add(new 汇总学校信息表DataTable(ds.Tables["汇总学校信息表"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -148,6 +157,16 @@ namespace 学籍管理系统 {
         public 专业信息表DataTable 专业信息表 {
             get {
                 return this.table专业信息表;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public 汇总学校信息表DataTable 汇总学校信息表 {
+            get {
+                return this.table汇总学校信息表;
             }
         }
         
@@ -233,6 +252,9 @@ namespace 学籍管理系统 {
                 if ((ds.Tables["专业信息表"] != null)) {
                     base.Tables.Add(new 专业信息表DataTable(ds.Tables["专业信息表"]));
                 }
+                if ((ds.Tables["汇总学校信息表"] != null)) {
+                    base.Tables.Add(new 汇总学校信息表DataTable(ds.Tables["汇总学校信息表"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -296,9 +318,17 @@ namespace 学籍管理系统 {
                     this.table专业信息表.InitVars();
                 }
             }
+            this.table汇总学校信息表 = ((汇总学校信息表DataTable)(base.Tables["汇总学校信息表"]));
+            if ((initTable == true)) {
+                if ((this.table汇总学校信息表 != null)) {
+                    this.table汇总学校信息表.InitVars();
+                }
+            }
             this.relation专业代码 = this.Relations["专业代码"];
             this.relation班级号 = this.Relations["班级号"];
             this.relation院系编号 = this.Relations["院系编号"];
+            this.relation专业代码1 = this.Relations["专业代码1"];
+            this.relation院系编号1 = this.Relations["院系编号1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -319,6 +349,8 @@ namespace 学籍管理系统 {
             base.Tables.Add(this.table账户信息表);
             this.table专业信息表 = new 专业信息表DataTable();
             base.Tables.Add(this.table专业信息表);
+            this.table汇总学校信息表 = new 汇总学校信息表DataTable();
+            base.Tables.Add(this.table汇总学校信息表);
             this.relation专业代码 = new global::System.Data.DataRelation("专业代码", new global::System.Data.DataColumn[] {
                         this.table专业信息表.专业代码Column}, new global::System.Data.DataColumn[] {
                         this.table班级信息表.专业代码Column}, false);
@@ -331,6 +363,14 @@ namespace 学籍管理系统 {
                         this.table学校信息表.院系编号Column}, new global::System.Data.DataColumn[] {
                         this.table专业信息表.院系编号Column}, false);
             this.Relations.Add(this.relation院系编号);
+            this.relation专业代码1 = new global::System.Data.DataRelation("专业代码1", new global::System.Data.DataColumn[] {
+                        this.table汇总学校信息表.专业代码Column}, new global::System.Data.DataColumn[] {
+                        this.table班级信息表.专业代码Column}, false);
+            this.Relations.Add(this.relation专业代码1);
+            this.relation院系编号1 = new global::System.Data.DataRelation("院系编号1", new global::System.Data.DataColumn[] {
+                        this.table学校信息表.院系编号Column}, new global::System.Data.DataColumn[] {
+                        this.table汇总学校信息表.院系编号Column}, false);
+            this.Relations.Add(this.relation院系编号1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -360,6 +400,12 @@ namespace 学籍管理系统 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerialize专业信息表() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerialize汇总学校信息表() {
             return false;
         }
         
@@ -432,6 +478,9 @@ namespace 学籍管理系统 {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void 专业信息表RowChangeEventHandler(object sender, 专业信息表RowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void 汇总学校信息表RowChangeEventHandler(object sender, 汇总学校信息表RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -611,6 +660,7 @@ namespace 学籍管理系统 {
                 this.column班级号.AllowDBNull = false;
                 this.column班级号.Unique = true;
                 this.column班级号.MaxLength = 45;
+                this.column班级名称.AllowDBNull = false;
                 this.column班级名称.MaxLength = 45;
                 this.column专业代码.AllowDBNull = false;
                 this.column专业代码.MaxLength = 45;
@@ -1078,6 +1128,7 @@ namespace 学籍管理系统 {
                 this.column性别.AllowDBNull = false;
                 this.column性别.MaxLength = 45;
                 this.column出生日期.AllowDBNull = false;
+                this.column政治面貌.AllowDBNull = false;
                 this.column政治面貌.MaxLength = 45;
                 this.column入学日期.AllowDBNull = false;
                 this.column院系名.AllowDBNull = false;
@@ -2126,6 +2177,363 @@ namespace 学籍管理系统 {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class 汇总学校信息表DataTable : global::System.Data.TypedTableBase<汇总学校信息表Row> {
+            
+            private global::System.Data.DataColumn column班级号;
+            
+            private global::System.Data.DataColumn column班级名称;
+            
+            private global::System.Data.DataColumn column专业代码;
+            
+            private global::System.Data.DataColumn column专业名;
+            
+            private global::System.Data.DataColumn column院系编号;
+            
+            private global::System.Data.DataColumn column学院名;
+            
+            private global::System.Data.DataColumn column班级人数;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表DataTable() {
+                this.TableName = "汇总学校信息表";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 汇总学校信息表DataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected 汇总学校信息表DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 班级号Column {
+                get {
+                    return this.column班级号;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 班级名称Column {
+                get {
+                    return this.column班级名称;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 专业代码Column {
+                get {
+                    return this.column专业代码;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 专业名Column {
+                get {
+                    return this.column专业名;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 院系编号Column {
+                get {
+                    return this.column院系编号;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 学院名Column {
+                get {
+                    return this.column学院名;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn 班级人数Column {
+                get {
+                    return this.column班级人数;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row this[int index] {
+                get {
+                    return ((汇总学校信息表Row)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 汇总学校信息表RowChangeEventHandler 汇总学校信息表RowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 汇总学校信息表RowChangeEventHandler 汇总学校信息表RowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 汇总学校信息表RowChangeEventHandler 汇总学校信息表RowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event 汇总学校信息表RowChangeEventHandler 汇总学校信息表RowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Add汇总学校信息表Row(汇总学校信息表Row row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row Add汇总学校信息表Row(string 班级号, string 班级名称, string 专业代码, string 专业名, 学校信息表Row parent学校信息表RowBy院系编号1, string 学院名, long 班级人数) {
+                汇总学校信息表Row row汇总学校信息表Row = ((汇总学校信息表Row)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        班级号,
+                        班级名称,
+                        专业代码,
+                        专业名,
+                        null,
+                        学院名,
+                        班级人数};
+                if ((parent学校信息表RowBy院系编号1 != null)) {
+                    columnValuesArray[4] = parent学校信息表RowBy院系编号1[0];
+                }
+                row汇总学校信息表Row.ItemArray = columnValuesArray;
+                this.Rows.Add(row汇总学校信息表Row);
+                return row汇总学校信息表Row;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row FindBy班级号专业代码(string 班级号, string 专业代码) {
+                return ((汇总学校信息表Row)(this.Rows.Find(new object[] {
+                            班级号,
+                            专业代码})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                汇总学校信息表DataTable cln = ((汇总学校信息表DataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new 汇总学校信息表DataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.column班级号 = base.Columns["班级号"];
+                this.column班级名称 = base.Columns["班级名称"];
+                this.column专业代码 = base.Columns["专业代码"];
+                this.column专业名 = base.Columns["专业名"];
+                this.column院系编号 = base.Columns["院系编号"];
+                this.column学院名 = base.Columns["学院名"];
+                this.column班级人数 = base.Columns["班级人数"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.column班级号 = new global::System.Data.DataColumn("班级号", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column班级号);
+                this.column班级名称 = new global::System.Data.DataColumn("班级名称", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column班级名称);
+                this.column专业代码 = new global::System.Data.DataColumn("专业代码", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column专业代码);
+                this.column专业名 = new global::System.Data.DataColumn("专业名", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column专业名);
+                this.column院系编号 = new global::System.Data.DataColumn("院系编号", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column院系编号);
+                this.column学院名 = new global::System.Data.DataColumn("学院名", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column学院名);
+                this.column班级人数 = new global::System.Data.DataColumn("班级人数", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.column班级人数);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.column班级号,
+                                this.column专业代码}, true));
+                this.column班级号.AllowDBNull = false;
+                this.column班级号.MaxLength = 45;
+                this.column班级名称.AllowDBNull = false;
+                this.column班级名称.MaxLength = 45;
+                this.column专业代码.AllowDBNull = false;
+                this.column专业代码.MaxLength = 45;
+                this.column专业名.AllowDBNull = false;
+                this.column专业名.MaxLength = 45;
+                this.column院系编号.AllowDBNull = false;
+                this.column院系编号.MaxLength = 45;
+                this.column学院名.AllowDBNull = false;
+                this.column学院名.MaxLength = 45;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row New汇总学校信息表Row() {
+                return ((汇总学校信息表Row)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new 汇总学校信息表Row(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(汇总学校信息表Row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.汇总学校信息表RowChanged != null)) {
+                    this.汇总学校信息表RowChanged(this, new 汇总学校信息表RowChangeEvent(((汇总学校信息表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.汇总学校信息表RowChanging != null)) {
+                    this.汇总学校信息表RowChanging(this, new 汇总学校信息表RowChangeEvent(((汇总学校信息表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.汇总学校信息表RowDeleted != null)) {
+                    this.汇总学校信息表RowDeleted(this, new 汇总学校信息表RowChangeEvent(((汇总学校信息表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.汇总学校信息表RowDeleting != null)) {
+                    this.汇总学校信息表RowDeleting(this, new 汇总学校信息表RowChangeEvent(((汇总学校信息表Row)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Remove汇总学校信息表Row(汇总学校信息表Row row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                studentinfomanagedatabaseDataSet ds = new studentinfomanagedatabaseDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "汇总学校信息表DataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class 班级信息表Row : global::System.Data.DataRow {
@@ -2154,12 +2562,7 @@ namespace 学籍管理系统 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 班级名称 {
                 get {
-                    try {
-                        return ((string)(this[this.table班级信息表.班级名称Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“班级信息表”中列“班级名称”的值为 DBNull。", e);
-                    }
+                    return ((string)(this[this.table班级信息表.班级名称Column]));
                 }
                 set {
                     this[this.table班级信息表.班级名称Column] = value;
@@ -2201,14 +2604,13 @@ namespace 学籍管理系统 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is班级名称Null() {
-                return this.IsNull(this.table班级信息表.班级名称Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set班级名称Null() {
-                this[this.table班级信息表.班级名称Column] = global::System.Convert.DBNull;
+            public 汇总学校信息表Row 汇总学校信息表Row {
+                get {
+                    return ((汇总学校信息表Row)(this.GetParentRow(this.Table.ParentRelations["专业代码1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["专业代码1"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2285,12 +2687,7 @@ namespace 学籍管理系统 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string 政治面貌 {
                 get {
-                    try {
-                        return ((string)(this[this.table学生信息表.政治面貌Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“学生信息表”中列“政治面貌”的值为 DBNull。", e);
-                    }
+                    return ((string)(this[this.table学生信息表.政治面貌Column]));
                 }
                 set {
                     this[this.table学生信息表.政治面貌Column] = value;
@@ -2430,18 +2827,6 @@ namespace 学籍管理系统 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Is政治面貌Null() {
-                return this.IsNull(this.table学生信息表.政治面貌Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Set政治面貌Null() {
-                this[this.table学生信息表.政治面貌Column] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Is照片Null() {
                 return this.IsNull(this.table学生信息表.照片Column);
             }
@@ -2520,6 +2905,17 @@ namespace 学籍管理系统 {
                 }
                 else {
                     return ((专业信息表Row[])(base.GetChildRows(this.Table.ChildRelations["院系编号"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row[] Get汇总学校信息表Rows() {
+                if ((this.Table.ChildRelations["院系编号1"] == null)) {
+                    return new 汇总学校信息表Row[0];
+                }
+                else {
+                    return ((汇总学校信息表Row[])(base.GetChildRows(this.Table.ChildRelations["院系编号1"])));
                 }
             }
         }
@@ -2660,6 +3056,137 @@ namespace 学籍管理系统 {
                 }
                 else {
                     return ((班级信息表Row[])(base.GetChildRows(this.Table.ChildRelations["专业代码"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class 汇总学校信息表Row : global::System.Data.DataRow {
+            
+            private 汇总学校信息表DataTable table汇总学校信息表;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal 汇总学校信息表Row(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.table汇总学校信息表 = ((汇总学校信息表DataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 班级号 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.班级号Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.班级号Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 班级名称 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.班级名称Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.班级名称Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 专业代码 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.专业代码Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.专业代码Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 专业名 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.专业名Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.专业名Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 院系编号 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.院系编号Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.院系编号Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string 学院名 {
+                get {
+                    return ((string)(this[this.table汇总学校信息表.学院名Column]));
+                }
+                set {
+                    this[this.table汇总学校信息表.学院名Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public long 班级人数 {
+                get {
+                    try {
+                        return ((long)(this[this.table汇总学校信息表.班级人数Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“汇总学校信息表”中列“班级人数”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.table汇总学校信息表.班级人数Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 学校信息表Row 学校信息表Row {
+                get {
+                    return ((学校信息表Row)(this.GetParentRow(this.Table.ParentRelations["院系编号1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["院系编号1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Is班级人数Null() {
+                return this.IsNull(this.table汇总学校信息表.班级人数Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Set班级人数Null() {
+                this[this.table汇总学校信息表.班级人数Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 班级信息表Row[] Get班级信息表Rows() {
+                if ((this.Table.ChildRelations["专业代码1"] == null)) {
+                    return new 班级信息表Row[0];
+                }
+                else {
+                    return ((班级信息表Row[])(base.GetChildRows(this.Table.ChildRelations["专业代码1"])));
                 }
             }
         }
@@ -2833,6 +3360,40 @@ namespace 学籍管理系统 {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class 汇总学校信息表RowChangeEvent : global::System.EventArgs {
+            
+            private 汇总学校信息表Row eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表RowChangeEvent(汇总学校信息表Row row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public 汇总学校信息表Row Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
@@ -2966,8 +3527,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM `班级信息表` WHERE ((`班级号` = @p1) AND ((@p2 = 1 AND `班级名称` IS NULL) OR (`班" +
-                "级名称` = @p3)) AND (`专业代码` = @p4) AND (`班级人数` = @p5))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `班级信息表` WHERE ((`班级号` = @p1) AND (`班级名称` = @p2) AND (`专业代码` = @p3) AN" +
+                "D (`班级人数` = @p4))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -2979,15 +3540,6 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p2";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "班级名称";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.DeleteCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -2995,7 +3547,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p4";
+            param.ParameterName = "@p3";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3003,7 +3555,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.DeleteCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p5";
+            param.ParameterName = "@p4";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -3045,8 +3597,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.UpdateCommand = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE `班级信息表` SET `班级号` = @p1, `班级名称` = @p2, `专业代码` = @p3, `班级人数` = @p4 WHERE ((" +
-                "`班级号` = @p5) AND ((@p6 = 1 AND `班级名称` IS NULL) OR (`班级名称` = @p7)) AND (`专业代码` = " +
-                "@p8) AND (`班级人数` = @p9))";
+                "`班级号` = @p5) AND (`班级名称` = @p6) AND (`专业代码` = @p7) AND (`班级人数` = @p8))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p1";
@@ -3086,15 +3637,6 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@p6";
-            param.DbType = global::System.Data.DbType.Int32;
-            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
-            param.IsNullable = true;
-            param.SourceColumn = "班级名称";
-            param.SourceVersion = global::System.Data.DataRowVersion.Original;
-            param.SourceColumnNullMapping = true;
-            this._adapter.UpdateCommand.Parameters.Add(param);
-            param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3102,7 +3644,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p8";
+            param.ParameterName = "@p7";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.IsNullable = true;
@@ -3110,7 +3652,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.SourceVersion = global::System.Data.DataRowVersion.Original;
             this._adapter.UpdateCommand.Parameters.Add(param);
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
-            param.ParameterName = "@p9";
+            param.ParameterName = "@p8";
             param.DbType = global::System.Data.DbType.Int32;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.Int32;
             param.IsNullable = true;
@@ -3129,23 +3671,35 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `班级号`, `班级名称`, `专业代码`, `班级人数` FROM `班级信息表`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT `班级号`, `班级名称`, `专业代码`, `班级人数` FROM `班级信息表` where (专业代码 = @professionCode)";
+            this._commandCollection[1].CommandText = "SELECT `班级号`, `班级名称`, `专业代码`, `班级人数` FROM `班级信息表` where(班级号 = @classCode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@classCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "班级号";
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT 专业代码, 班级人数, 班级号, 班级名称 FROM 班级信息表 WHERE (专业代码 = @professionCode)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@professionCode";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
             param.IsNullable = true;
             param.SourceColumn = "专业代码";
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3176,8 +3730,44 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByProfessionCode(studentinfomanagedatabaseDataSet.班级信息表DataTable dataTable, string professionCode) {
+        public virtual int FillByClassCode(studentinfomanagedatabaseDataSet.班级信息表DataTable dataTable, string classCode) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.班级信息表DataTable GetDataByClassCode(string classCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
+            studentinfomanagedatabaseDataSet.班级信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.班级信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByProfessionCode(studentinfomanagedatabaseDataSet.班级信息表DataTable dataTable, string professionCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((professionCode == null)) {
                 throw new global::System.ArgumentNullException("professionCode");
             }
@@ -3196,7 +3786,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual studentinfomanagedatabaseDataSet.班级信息表DataTable GetDataByProfessionCode(string professionCode) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((professionCode == null)) {
                 throw new global::System.ArgumentNullException("professionCode");
             }
@@ -3241,28 +3831,26 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string p1, string p3, string p4, int p5) {
+        public virtual int Delete(string p1, string p2, string p3, int p4) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(p1));
             }
-            if ((p3 == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            if ((p2 == null)) {
+                throw new global::System.ArgumentNullException("p2");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(p2));
+            }
+            if ((p3 == null)) {
+                throw new global::System.ArgumentNullException("p3");
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(p3));
             }
-            if ((p4 == null)) {
-                throw new global::System.ArgumentNullException("p4");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(p4));
-            }
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(p5));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(p4));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3291,7 +3879,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(p1));
             }
             if ((p2 == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("p2");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(p2));
@@ -3323,7 +3911,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p1, string p2, string p3, int p4, string p5, string p7, string p8, int p9) {
+        public virtual int Update(string p1, string p2, string p3, int p4, string p5, string p6, string p7, int p8) {
             if ((p1 == null)) {
                 throw new global::System.ArgumentNullException("p1");
             }
@@ -3331,7 +3919,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(p1));
             }
             if ((p2 == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("p2");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(p2));
@@ -3349,21 +3937,19 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(p5));
             }
-            if ((p7 == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((p6 == null)) {
+                throw new global::System.ArgumentNullException("p6");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(p6));
+            }
+            if ((p7 == null)) {
+                throw new global::System.ArgumentNullException("p7");
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(p7));
             }
-            if ((p8 == null)) {
-                throw new global::System.ArgumentNullException("p8");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(p8));
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p9));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p8));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3384,8 +3970,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string p2, string p3, int p4, string p5, string p7, string p8, int p9) {
-            return this.Update(p5, p2, p3, p4, p5, p7, p8, p9);
+        public virtual int Update(string p2, string p3, int p4, string p5, string p6, string p7, int p8) {
+            return this.Update(p5, p2, p3, p4, p5, p6, p7, p8);
         }
     }
     
@@ -4012,8 +4598,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (班级号 = @classCode)";
+            this._commandCollection[1].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (班级号 = @classCode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@classCode";
@@ -4025,8 +4611,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (院系名 = @collegeName)";
+            this._commandCollection[2].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (院系名 = @collegeName)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@collegeName";
@@ -4038,8 +4624,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(param);
             this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (政治面貌 = @politicalStatus)";
+            this._commandCollection[3].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (政治面貌 = @politicalStatus)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@politicalStatus";
@@ -4051,8 +4637,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[3].Parameters.Add(param);
             this._commandCollection[4] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (专业名 = @professionName)";
+            this._commandCollection[4].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (专业名 = @professionName)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@professionName";
@@ -4064,8 +4650,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[4].Parameters.Add(param);
             this._commandCollection[5] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (学号 = @studentID)";
+            this._commandCollection[5].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (学号 = @studentID)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@studentID";
@@ -4077,8 +4663,8 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT 学号, 姓名, 性别, 出生日期, 政治面貌, 入学日期, 院系名, 专业名, 班级号, 电话号码, 身份证号码, 详细家庭住址, 照片, 备注, " +
-                "总学分 FROM 学生信息表 WHERE (姓名 = @studentName)";
+            this._commandCollection[6].CommandText = "SELECT 专业名, 入学日期, 出生日期, 备注, 姓名, 学号, 性别, 总学分, 政治面貌, 照片, 班级号, 电话号码, 详细家庭住址, 身份证号码, " +
+                "院系名 FROM 学生信息表 WHERE (姓名 = @studentName)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@studentName";
@@ -4205,7 +4791,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         public virtual int FillByPoliticalStatus(studentinfomanagedatabaseDataSet.学生信息表DataTable dataTable, string politicalStatus) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((politicalStatus == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("politicalStatus");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(politicalStatus));
@@ -4224,7 +4810,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         public virtual studentinfomanagedatabaseDataSet.学生信息表DataTable GetDataByPoliticalStatus(string politicalStatus) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((politicalStatus == null)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("politicalStatus");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(politicalStatus));
@@ -5066,23 +5652,35 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[2];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `院系编号`, `学院名`, `专业数目` FROM `学校信息表`";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT   院系编号, 学院名, 专业数目\r\nFROM      学校信息表\r\nWHERE   (学院名 = @collegeName)";
+            this._commandCollection[1].CommandText = "SELECT `院系编号`, `学院名`, `专业数目` FROM `学校信息表` where(院系编号 = @collegeCode)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@collegeCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "院系编号";
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT   院系编号, 学院名, 专业数目\r\nFROM      学校信息表\r\nWHERE   (学院名 = @collegeName)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@collegeName";
             param.DbType = global::System.Data.DbType.String;
             param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
             param.Size = 45;
             param.IsNullable = true;
             param.SourceColumn = "学院名";
-            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5113,8 +5711,44 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByCollegeName(studentinfomanagedatabaseDataSet.学校信息表DataTable dataTable, string collegeName) {
+        public virtual int FillByCollegeCode(studentinfomanagedatabaseDataSet.学校信息表DataTable dataTable, string collegeCode) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((collegeCode == null)) {
+                throw new global::System.ArgumentNullException("collegeCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.学校信息表DataTable GetDataByCollegeCode(string collegeCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((collegeCode == null)) {
+                throw new global::System.ArgumentNullException("collegeCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeCode));
+            }
+            studentinfomanagedatabaseDataSet.学校信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.学校信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCollegeName(studentinfomanagedatabaseDataSet.学校信息表DataTable dataTable, string collegeName) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((collegeName == null)) {
                 throw new global::System.ArgumentNullException("collegeName");
             }
@@ -5133,7 +5767,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual studentinfomanagedatabaseDataSet.学校信息表DataTable GetDataByCollegeName(string collegeName) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((collegeName == null)) {
                 throw new global::System.ArgumentNullException("collegeName");
             }
@@ -6184,7 +6818,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[3];
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
             this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT `专业代码`, `专业名`, `院系编号`, `班级数目` FROM `专业信息表`";
@@ -6203,8 +6837,20 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT `专业代码`, `专业名`, `院系编号`, `班级数目`  FROM `专业信息表` where (专业名 = @professionName)";
+            this._commandCollection[2].CommandText = "SELECT `专业代码`, `专业名`, `院系编号`, `班级数目` FROM `专业信息表` where(专业代码 = @professionCode)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@professionCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "专业代码";
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT `专业代码`, `专业名`, `院系编号`, `班级数目`  FROM `专业信息表` where (专业名 = @professionName)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             param = new global::MySql.Data.MySqlClient.MySqlParameter();
             param.ParameterName = "@professionName";
             param.DbType = global::System.Data.DbType.String;
@@ -6212,7 +6858,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
             param.Size = 45;
             param.IsNullable = true;
             param.SourceColumn = "专业名";
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6279,8 +6925,44 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByProfessionName(studentinfomanagedatabaseDataSet.专业信息表DataTable dataTable, string professionName) {
+        public virtual int FillByProfessionCode(studentinfomanagedatabaseDataSet.专业信息表DataTable dataTable, string professionCode) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((professionCode == null)) {
+                throw new global::System.ArgumentNullException("professionCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.专业信息表DataTable GetDataByProfessionCode(string professionCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((professionCode == null)) {
+                throw new global::System.ArgumentNullException("professionCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionCode));
+            }
+            studentinfomanagedatabaseDataSet.专业信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.专业信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByProfessionName(studentinfomanagedatabaseDataSet.专业信息表DataTable dataTable, string professionName) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((professionName == null)) {
                 throw new global::System.ArgumentNullException("professionName");
             }
@@ -6299,7 +6981,7 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual studentinfomanagedatabaseDataSet.专业信息表DataTable GetDataByProfessionName(string professionName) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((professionName == null)) {
                 throw new global::System.ArgumentNullException("professionName");
             }
@@ -6485,6 +7167,339 @@ namespace 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string p2, string p3, int p4, string p5, string p6, string p7, int p8) {
             return this.Update(p5, p2, p3, p4, p5, p6, p7, p8);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class 汇总学校信息表TableAdapter : global::System.ComponentModel.Component {
+        
+        private global::MySql.Data.MySqlClient.MySqlDataAdapter _adapter;
+        
+        private global::MySql.Data.MySqlClient.MySqlConnection _connection;
+        
+        private global::MySql.Data.MySqlClient.MySqlTransaction _transaction;
+        
+        private global::MySql.Data.MySqlClient.MySqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public 汇总学校信息表TableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::MySql.Data.MySqlClient.MySqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::MySql.Data.MySqlClient.MySqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::MySql.Data.MySqlClient.MySqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::MySql.Data.MySqlClient.MySqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::MySql.Data.MySqlClient.MySqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "汇总学校信息表";
+            tableMapping.ColumnMappings.Add("班级号", "班级号");
+            tableMapping.ColumnMappings.Add("班级名称", "班级名称");
+            tableMapping.ColumnMappings.Add("专业代码", "专业代码");
+            tableMapping.ColumnMappings.Add("专业名", "专业名");
+            tableMapping.ColumnMappings.Add("院系编号", "院系编号");
+            tableMapping.ColumnMappings.Add("学院名", "学院名");
+            tableMapping.ColumnMappings.Add("班级人数", "班级人数");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::MySql.Data.MySqlClient.MySqlConnection();
+            this._connection.ConnectionString = global::学籍管理系统.Properties.Settings.Default.studentinfomanagedatabaseConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::MySql.Data.MySqlClient.MySqlCommand[4];
+            this._commandCollection[0] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 
+from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 
+join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 
+left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS 班级人数 
+FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 
+from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 
+join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 
+left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS 班级人数 
+FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号 where (班级信息表.班级号 = @classCode)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::MySql.Data.MySqlClient.MySqlParameter param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@classCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "班级号";
+            this._commandCollection[1].Parameters.Add(param);
+            this._commandCollection[2] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = @"select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 
+from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 
+join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 
+left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS 班级人数 
+FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号 where(学校信息表.院系编号 = @collegeCode)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@collegeCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "院系编号";
+            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::MySql.Data.MySqlClient.MySqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = @"select 班级信息表.班级号, 班级名称, 专业信息表.专业代码, 专业名,  专业信息表.院系编号, 学院名, tmp.班级人数 
+from 班级信息表 join 专业信息表 on 班级信息表.专业代码 = 专业信息表.专业代码 
+join 学校信息表 on 专业信息表.院系编号 = 学校信息表.院系编号 
+left join (SELECT 学生信息表.班级号, COUNT(学生信息表.班级号) AS 班级人数 
+FROM 学生信息表  group by 班级号) as tmp on 班级信息表.班级号 = tmp.班级号 where (专业信息表.专业代码 = @professionCode)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::MySql.Data.MySqlClient.MySqlParameter();
+            param.ParameterName = "@professionCode";
+            param.DbType = global::System.Data.DbType.String;
+            param.MySqlDbType = global::MySql.Data.MySqlClient.MySqlDbType.VarChar;
+            param.Size = 45;
+            param.IsNullable = true;
+            param.SourceColumn = "专业代码";
+            this._commandCollection[3].Parameters.Add(param);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual studentinfomanagedatabaseDataSet.汇总学校信息表DataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.汇总学校信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByClassCode(studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable, string classCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.汇总学校信息表DataTable GetDataByClassCode(string classCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((classCode == null)) {
+                throw new global::System.ArgumentNullException("classCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(classCode));
+            }
+            studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.汇总学校信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByCollegeCode(studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable, string collegeCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((collegeCode == null)) {
+                throw new global::System.ArgumentNullException("collegeCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.汇总学校信息表DataTable GetDataByCollegeCode(string collegeCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((collegeCode == null)) {
+                throw new global::System.ArgumentNullException("collegeCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(collegeCode));
+            }
+            studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.汇总学校信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByProfessionCode(studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable, string professionCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((professionCode == null)) {
+                throw new global::System.ArgumentNullException("professionCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionCode));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual studentinfomanagedatabaseDataSet.汇总学校信息表DataTable GetDataByProfessionCode(string professionCode) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((professionCode == null)) {
+                throw new global::System.ArgumentNullException("professionCode");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(professionCode));
+            }
+            studentinfomanagedatabaseDataSet.汇总学校信息表DataTable dataTable = new studentinfomanagedatabaseDataSet.汇总学校信息表DataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     

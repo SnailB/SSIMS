@@ -2,6 +2,10 @@
     
     
     public partial class studentinfomanagedatabaseDataSet {
+        partial class 汇总学校信息表DataTable
+        {
+        }
     }
 }
+
 

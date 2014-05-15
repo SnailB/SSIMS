@@ -64,19 +64,29 @@
             this.classInfoAddButton = new System.Windows.Forms.Button();
             this.classCodeLabel = new System.Windows.Forms.Label();
             this.classCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.班级信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
             this.classLabel = new System.Windows.Forms.Label();
             this.classComboBox = new System.Windows.Forms.ComboBox();
             this.professionCodeLabel = new System.Windows.Forms.Label();
             this.professionCodeComboBox = new System.Windows.Forms.ComboBox();
+            this.专业信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.collegeCodeLabel = new System.Windows.Forms.Label();
             this.collegeCodeComboBox = new System.Windows.Forms.ComboBox();
             this.学校信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentinfomanagedatabaseDataSet = new 学籍管理系统.studentinfomanagedatabaseDataSet();
             this.professionLabel = new System.Windows.Forms.Label();
             this.professionComboBox = new System.Windows.Forms.ComboBox();
             this.collegeLabel = new System.Windows.Forms.Label();
             this.collegeComboBox = new System.Windows.Forms.ComboBox();
             this.collegeTableDataGridView = new System.Windows.Forms.DataGridView();
+            this.班级名称DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.专业名DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.学院名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.班级号DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.专业代码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.院系编号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.班级人数DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.汇总学校信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentTabPage = new System.Windows.Forms.TabPage();
             this.creditTextBox = new System.Windows.Forms.TextBox();
             this.学生信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -105,6 +115,17 @@
             this.照片PictureBox = new System.Windows.Forms.PictureBox();
             this.备注TextBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.学号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.姓名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.性别DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.班级号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.专业名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.院系名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.总学分 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.出生日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.政治面貌DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.入学日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.电话号码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountTabPage = new System.Windows.Forms.TabPage();
             this.cleanAccountQueryButton = new System.Windows.Forms.Button();
             this.accountCategoryButton = new System.Windows.Forms.Button();
@@ -122,8 +143,6 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.班级信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.专业信息表BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.学校信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学校信息表TableAdapter();
             this.学生信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.学生信息表TableAdapter();
             this.tableAdapterManager = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.TableAdapterManager();
@@ -131,17 +150,7 @@
             this.专业信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.专业信息表TableAdapter();
             this.班级信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.班级信息表TableAdapter();
             this.exitSystemLable = new System.Windows.Forms.Label();
-            this.学号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.姓名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.性别DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.班级号DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.专业名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.院系名DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.总学分 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.出生日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.政治面貌DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.入学日期DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.电话号码DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.汇总学校信息表TableAdapter = new 学籍管理系统.studentinfomanagedatabaseDataSetTableAdapters.汇总学校信息表TableAdapter();
             学号Label = new System.Windows.Forms.Label();
             姓名Label = new System.Windows.Forms.Label();
             性别Label = new System.Windows.Forms.Label();
@@ -162,9 +171,12 @@
             label1 = new System.Windows.Forms.Label();
             this.schoolTabControl.SuspendLayout();
             this.schoolTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeTableDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.汇总学校信息表BindingSource)).BeginInit();
             this.studentTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.照片PictureBox)).BeginInit();
@@ -172,8 +184,6 @@
             this.accountTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // 学号Label
@@ -527,11 +537,22 @@
             // 
             // classCodeComboBox
             // 
+            this.classCodeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.班级信息表BindingSource, "班级号", true));
             this.classCodeComboBox.FormattingEnabled = true;
             this.classCodeComboBox.Location = new System.Drawing.Point(248, 133);
             this.classCodeComboBox.Name = "classCodeComboBox";
             this.classCodeComboBox.Size = new System.Drawing.Size(87, 20);
             this.classCodeComboBox.TabIndex = 13;
+            // 
+            // 班级信息表BindingSource
+            // 
+            this.班级信息表BindingSource.DataMember = "班级信息表";
+            this.班级信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
+            // 
+            // studentinfomanagedatabaseDataSet
+            // 
+            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
+            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // classLabel
             // 
@@ -544,6 +565,9 @@
             // 
             // classComboBox
             // 
+            this.classComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.班级信息表BindingSource, "班级名称", true));
+            this.classComboBox.DataSource = this.班级信息表BindingSource;
+            this.classComboBox.DisplayMember = "班级名称";
             this.classComboBox.FormattingEnabled = true;
             this.classComboBox.Location = new System.Drawing.Point(28, 133);
             this.classComboBox.Name = "classComboBox";
@@ -561,11 +585,19 @@
             // 
             // professionCodeComboBox
             // 
+            this.professionCodeComboBox.DataSource = this.专业信息表BindingSource;
+            this.professionCodeComboBox.DisplayMember = "专业代码";
             this.professionCodeComboBox.FormattingEnabled = true;
             this.professionCodeComboBox.Location = new System.Drawing.Point(248, 82);
             this.professionCodeComboBox.Name = "professionCodeComboBox";
             this.professionCodeComboBox.Size = new System.Drawing.Size(87, 20);
             this.professionCodeComboBox.TabIndex = 9;
+            this.professionCodeComboBox.ValueMember = "专业代码";
+            // 
+            // 专业信息表BindingSource
+            // 
+            this.专业信息表BindingSource.DataMember = "专业信息表";
+            this.专业信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
             // 
             // collegeCodeLabel
             // 
@@ -585,16 +617,12 @@
             this.collegeCodeComboBox.Name = "collegeCodeComboBox";
             this.collegeCodeComboBox.Size = new System.Drawing.Size(87, 20);
             this.collegeCodeComboBox.TabIndex = 6;
+            this.collegeCodeComboBox.ValueMember = "院系编号";
             // 
             // 学校信息表BindingSource
             // 
             this.学校信息表BindingSource.DataMember = "学校信息表";
             this.学校信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
-            // studentinfomanagedatabaseDataSet
-            // 
-            this.studentinfomanagedatabaseDataSet.DataSetName = "studentinfomanagedatabaseDataSet";
-            this.studentinfomanagedatabaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // professionLabel
             // 
@@ -607,11 +635,14 @@
             // 
             // professionComboBox
             // 
+            this.professionComboBox.DataSource = this.专业信息表BindingSource;
+            this.professionComboBox.DisplayMember = "专业名";
             this.professionComboBox.FormattingEnabled = true;
             this.professionComboBox.Location = new System.Drawing.Point(28, 82);
             this.professionComboBox.Name = "professionComboBox";
             this.professionComboBox.Size = new System.Drawing.Size(192, 20);
             this.professionComboBox.TabIndex = 3;
+            this.professionComboBox.ValueMember = "专业名";
             // 
             // collegeLabel
             // 
@@ -631,18 +662,85 @@
             this.collegeComboBox.Name = "collegeComboBox";
             this.collegeComboBox.Size = new System.Drawing.Size(192, 20);
             this.collegeComboBox.TabIndex = 0;
+            this.collegeComboBox.ValueMember = "学院名";
             // 
             // collegeTableDataGridView
             // 
             this.collegeTableDataGridView.AllowUserToAddRows = false;
             this.collegeTableDataGridView.AllowUserToDeleteRows = false;
+            this.collegeTableDataGridView.AllowUserToOrderColumns = true;
+            this.collegeTableDataGridView.AutoGenerateColumns = false;
             this.collegeTableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.collegeTableDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.班级名称DataGridViewTextBoxColumn,
+            this.专业名DataGridViewTextBoxColumn1,
+            this.学院名DataGridViewTextBoxColumn,
+            this.班级号DataGridViewTextBoxColumn1,
+            this.专业代码DataGridViewTextBoxColumn,
+            this.院系编号DataGridViewTextBoxColumn,
+            this.班级人数DataGridViewTextBoxColumn});
+            this.collegeTableDataGridView.DataSource = this.汇总学校信息表BindingSource;
             this.collegeTableDataGridView.Location = new System.Drawing.Point(0, 173);
             this.collegeTableDataGridView.Name = "collegeTableDataGridView";
+            this.collegeTableDataGridView.ReadOnly = true;
             this.collegeTableDataGridView.RowTemplate.Height = 23;
             this.collegeTableDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.collegeTableDataGridView.Size = new System.Drawing.Size(675, 377);
             this.collegeTableDataGridView.TabIndex = 16;
+            // 
+            // 班级名称DataGridViewTextBoxColumn
+            // 
+            this.班级名称DataGridViewTextBoxColumn.DataPropertyName = "班级名称";
+            this.班级名称DataGridViewTextBoxColumn.HeaderText = "班级名称";
+            this.班级名称DataGridViewTextBoxColumn.Name = "班级名称DataGridViewTextBoxColumn";
+            this.班级名称DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 专业名DataGridViewTextBoxColumn1
+            // 
+            this.专业名DataGridViewTextBoxColumn1.DataPropertyName = "专业名";
+            this.专业名DataGridViewTextBoxColumn1.HeaderText = "专业名";
+            this.专业名DataGridViewTextBoxColumn1.Name = "专业名DataGridViewTextBoxColumn1";
+            this.专业名DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // 学院名DataGridViewTextBoxColumn
+            // 
+            this.学院名DataGridViewTextBoxColumn.DataPropertyName = "学院名";
+            this.学院名DataGridViewTextBoxColumn.HeaderText = "学院名";
+            this.学院名DataGridViewTextBoxColumn.Name = "学院名DataGridViewTextBoxColumn";
+            this.学院名DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 班级号DataGridViewTextBoxColumn1
+            // 
+            this.班级号DataGridViewTextBoxColumn1.DataPropertyName = "班级号";
+            this.班级号DataGridViewTextBoxColumn1.HeaderText = "班级号";
+            this.班级号DataGridViewTextBoxColumn1.Name = "班级号DataGridViewTextBoxColumn1";
+            this.班级号DataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // 专业代码DataGridViewTextBoxColumn
+            // 
+            this.专业代码DataGridViewTextBoxColumn.DataPropertyName = "专业代码";
+            this.专业代码DataGridViewTextBoxColumn.HeaderText = "专业代码";
+            this.专业代码DataGridViewTextBoxColumn.Name = "专业代码DataGridViewTextBoxColumn";
+            this.专业代码DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 院系编号DataGridViewTextBoxColumn
+            // 
+            this.院系编号DataGridViewTextBoxColumn.DataPropertyName = "院系编号";
+            this.院系编号DataGridViewTextBoxColumn.HeaderText = "院系编号";
+            this.院系编号DataGridViewTextBoxColumn.Name = "院系编号DataGridViewTextBoxColumn";
+            this.院系编号DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 班级人数DataGridViewTextBoxColumn
+            // 
+            this.班级人数DataGridViewTextBoxColumn.DataPropertyName = "班级人数";
+            this.班级人数DataGridViewTextBoxColumn.HeaderText = "班级人数";
+            this.班级人数DataGridViewTextBoxColumn.Name = "班级人数DataGridViewTextBoxColumn";
+            this.班级人数DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 汇总学校信息表BindingSource
+            // 
+            this.汇总学校信息表BindingSource.DataMember = "汇总学校信息表";
+            this.汇总学校信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
             // 
             // studentTabPage
             // 
@@ -962,6 +1060,86 @@
             this.dataGridView1.Size = new System.Drawing.Size(676, 292);
             this.dataGridView1.TabIndex = 0;
             // 
+            // 学号DataGridViewTextBoxColumn
+            // 
+            this.学号DataGridViewTextBoxColumn.DataPropertyName = "学号";
+            this.学号DataGridViewTextBoxColumn.HeaderText = "学号";
+            this.学号DataGridViewTextBoxColumn.Name = "学号DataGridViewTextBoxColumn";
+            this.学号DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 姓名DataGridViewTextBoxColumn
+            // 
+            this.姓名DataGridViewTextBoxColumn.DataPropertyName = "姓名";
+            this.姓名DataGridViewTextBoxColumn.HeaderText = "姓名";
+            this.姓名DataGridViewTextBoxColumn.Name = "姓名DataGridViewTextBoxColumn";
+            this.姓名DataGridViewTextBoxColumn.ReadOnly = true;
+            this.姓名DataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 性别DataGridViewTextBoxColumn
+            // 
+            this.性别DataGridViewTextBoxColumn.DataPropertyName = "性别";
+            this.性别DataGridViewTextBoxColumn.HeaderText = "性别";
+            this.性别DataGridViewTextBoxColumn.Name = "性别DataGridViewTextBoxColumn";
+            this.性别DataGridViewTextBoxColumn.ReadOnly = true;
+            this.性别DataGridViewTextBoxColumn.Width = 80;
+            // 
+            // 班级号DataGridViewTextBoxColumn
+            // 
+            this.班级号DataGridViewTextBoxColumn.DataPropertyName = "班级号";
+            this.班级号DataGridViewTextBoxColumn.HeaderText = "班级号";
+            this.班级号DataGridViewTextBoxColumn.Name = "班级号DataGridViewTextBoxColumn";
+            this.班级号DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 专业名DataGridViewTextBoxColumn
+            // 
+            this.专业名DataGridViewTextBoxColumn.DataPropertyName = "专业名";
+            this.专业名DataGridViewTextBoxColumn.HeaderText = "专业名";
+            this.专业名DataGridViewTextBoxColumn.Name = "专业名DataGridViewTextBoxColumn";
+            this.专业名DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 院系名DataGridViewTextBoxColumn
+            // 
+            this.院系名DataGridViewTextBoxColumn.DataPropertyName = "院系名";
+            this.院系名DataGridViewTextBoxColumn.HeaderText = "院系名";
+            this.院系名DataGridViewTextBoxColumn.Name = "院系名DataGridViewTextBoxColumn";
+            this.院系名DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 总学分
+            // 
+            this.总学分.DataPropertyName = "总学分";
+            this.总学分.HeaderText = "总学分";
+            this.总学分.Name = "总学分";
+            this.总学分.ReadOnly = true;
+            this.总学分.Width = 80;
+            // 
+            // 出生日期DataGridViewTextBoxColumn
+            // 
+            this.出生日期DataGridViewTextBoxColumn.DataPropertyName = "出生日期";
+            this.出生日期DataGridViewTextBoxColumn.HeaderText = "出生日期";
+            this.出生日期DataGridViewTextBoxColumn.Name = "出生日期DataGridViewTextBoxColumn";
+            this.出生日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 政治面貌DataGridViewTextBoxColumn
+            // 
+            this.政治面貌DataGridViewTextBoxColumn.DataPropertyName = "政治面貌";
+            this.政治面貌DataGridViewTextBoxColumn.HeaderText = "政治面貌";
+            this.政治面貌DataGridViewTextBoxColumn.Name = "政治面貌DataGridViewTextBoxColumn";
+            this.政治面貌DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 入学日期DataGridViewTextBoxColumn
+            // 
+            this.入学日期DataGridViewTextBoxColumn.DataPropertyName = "入学日期";
+            this.入学日期DataGridViewTextBoxColumn.HeaderText = "入学日期";
+            this.入学日期DataGridViewTextBoxColumn.Name = "入学日期DataGridViewTextBoxColumn";
+            this.入学日期DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // 电话号码DataGridViewTextBoxColumn
+            // 
+            this.电话号码DataGridViewTextBoxColumn.DataPropertyName = "电话号码";
+            this.电话号码DataGridViewTextBoxColumn.HeaderText = "电话号码";
+            this.电话号码DataGridViewTextBoxColumn.Name = "电话号码DataGridViewTextBoxColumn";
+            this.电话号码DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // accountTabPage
             // 
             this.accountTabPage.AutoScroll = true;
@@ -1152,16 +1330,6 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 200;
             // 
-            // 班级信息表BindingSource
-            // 
-            this.班级信息表BindingSource.DataMember = "班级信息表";
-            this.班级信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
-            // 专业信息表BindingSource
-            // 
-            this.专业信息表BindingSource.DataMember = "专业信息表";
-            this.专业信息表BindingSource.DataSource = this.studentinfomanagedatabaseDataSet;
-            // 
             // 学校信息表TableAdapter
             // 
             this.学校信息表TableAdapter.ClearBeforeFill = true;
@@ -1203,85 +1371,9 @@
             this.exitSystemLable.Text = "退出系统";
             this.exitSystemLable.Click += new System.EventHandler(this.exitSystemLable_Click);
             // 
-            // 学号DataGridViewTextBoxColumn
+            // 汇总学校信息表TableAdapter
             // 
-            this.学号DataGridViewTextBoxColumn.DataPropertyName = "学号";
-            this.学号DataGridViewTextBoxColumn.HeaderText = "学号";
-            this.学号DataGridViewTextBoxColumn.Name = "学号DataGridViewTextBoxColumn";
-            this.学号DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 姓名DataGridViewTextBoxColumn
-            // 
-            this.姓名DataGridViewTextBoxColumn.DataPropertyName = "姓名";
-            this.姓名DataGridViewTextBoxColumn.HeaderText = "姓名";
-            this.姓名DataGridViewTextBoxColumn.Name = "姓名DataGridViewTextBoxColumn";
-            this.姓名DataGridViewTextBoxColumn.ReadOnly = true;
-            this.姓名DataGridViewTextBoxColumn.Width = 80;
-            // 
-            // 性别DataGridViewTextBoxColumn
-            // 
-            this.性别DataGridViewTextBoxColumn.DataPropertyName = "性别";
-            this.性别DataGridViewTextBoxColumn.HeaderText = "性别";
-            this.性别DataGridViewTextBoxColumn.Name = "性别DataGridViewTextBoxColumn";
-            this.性别DataGridViewTextBoxColumn.ReadOnly = true;
-            this.性别DataGridViewTextBoxColumn.Width = 80;
-            // 
-            // 班级号DataGridViewTextBoxColumn
-            // 
-            this.班级号DataGridViewTextBoxColumn.DataPropertyName = "班级号";
-            this.班级号DataGridViewTextBoxColumn.HeaderText = "班级号";
-            this.班级号DataGridViewTextBoxColumn.Name = "班级号DataGridViewTextBoxColumn";
-            this.班级号DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 专业名DataGridViewTextBoxColumn
-            // 
-            this.专业名DataGridViewTextBoxColumn.DataPropertyName = "专业名";
-            this.专业名DataGridViewTextBoxColumn.HeaderText = "专业名";
-            this.专业名DataGridViewTextBoxColumn.Name = "专业名DataGridViewTextBoxColumn";
-            this.专业名DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 院系名DataGridViewTextBoxColumn
-            // 
-            this.院系名DataGridViewTextBoxColumn.DataPropertyName = "院系名";
-            this.院系名DataGridViewTextBoxColumn.HeaderText = "院系名";
-            this.院系名DataGridViewTextBoxColumn.Name = "院系名DataGridViewTextBoxColumn";
-            this.院系名DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 总学分
-            // 
-            this.总学分.DataPropertyName = "总学分";
-            this.总学分.HeaderText = "总学分";
-            this.总学分.Name = "总学分";
-            this.总学分.ReadOnly = true;
-            this.总学分.Width = 80;
-            // 
-            // 出生日期DataGridViewTextBoxColumn
-            // 
-            this.出生日期DataGridViewTextBoxColumn.DataPropertyName = "出生日期";
-            this.出生日期DataGridViewTextBoxColumn.HeaderText = "出生日期";
-            this.出生日期DataGridViewTextBoxColumn.Name = "出生日期DataGridViewTextBoxColumn";
-            this.出生日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 政治面貌DataGridViewTextBoxColumn
-            // 
-            this.政治面貌DataGridViewTextBoxColumn.DataPropertyName = "政治面貌";
-            this.政治面貌DataGridViewTextBoxColumn.HeaderText = "政治面貌";
-            this.政治面貌DataGridViewTextBoxColumn.Name = "政治面貌DataGridViewTextBoxColumn";
-            this.政治面貌DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 入学日期DataGridViewTextBoxColumn
-            // 
-            this.入学日期DataGridViewTextBoxColumn.DataPropertyName = "入学日期";
-            this.入学日期DataGridViewTextBoxColumn.HeaderText = "入学日期";
-            this.入学日期DataGridViewTextBoxColumn.Name = "入学日期DataGridViewTextBoxColumn";
-            this.入学日期DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // 电话号码DataGridViewTextBoxColumn
-            // 
-            this.电话号码DataGridViewTextBoxColumn.DataPropertyName = "电话号码";
-            this.电话号码DataGridViewTextBoxColumn.HeaderText = "电话号码";
-            this.电话号码DataGridViewTextBoxColumn.Name = "电话号码DataGridViewTextBoxColumn";
-            this.电话号码DataGridViewTextBoxColumn.ReadOnly = true;
+            this.汇总学校信息表TableAdapter.ClearBeforeFill = true;
             // 
             // AdminForm
             // 
@@ -1296,9 +1388,12 @@
             this.schoolTabControl.ResumeLayout(false);
             this.schoolTabPage.ResumeLayout(false);
             this.schoolTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentinfomanagedatabaseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.学校信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.collegeTableDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.汇总学校信息表BindingSource)).EndInit();
             this.studentTabPage.ResumeLayout(false);
             this.studentTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.学生信息表BindingSource)).EndInit();
@@ -1308,8 +1403,6 @@
             this.accountTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.账户信息表DataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.班级信息表BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.专业信息表BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1412,5 +1505,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 政治面貌DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 入学日期DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn 电话号码DataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource 汇总学校信息表BindingSource;
+        private studentinfomanagedatabaseDataSetTableAdapters.汇总学校信息表TableAdapter 汇总学校信息表TableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 班级名称DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 专业名DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 学院名DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 班级号DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 专业代码DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 院系编号DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 班级人数DataGridViewTextBoxColumn;
     }
 }

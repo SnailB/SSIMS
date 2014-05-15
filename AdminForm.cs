@@ -13,122 +13,61 @@ namespace 学籍管理系统
 {
     public partial class AdminForm : Form
     {
-        MySqlConnectionStringBuilder connectStringBuilder;
-        MySqlConnection myConnection;
-        MySqlCommand myCommand;
-        MySqlDataAdapter myAdapter;
-        DataTable myDataTable;
-        BindingSource professionBindingSource = new BindingSource();
-        BindingSource classBindingSource = new BindingSource();
-        BindingSource tableBindingSource = new BindingSource();
         public AdminForm()
         {
             InitializeComponent();
-            #region 初始化数据库连接
-            connectStringBuilder = new MySqlConnectionStringBuilder();
-            connectStringBuilder.Database = "studentinfomanagedatabase";
-            connectStringBuilder.Server = "localhost";
-            connectStringBuilder.UserID = "root";
-            connectStringBuilder.Password = "slowly";
-            #endregion
         }
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            
-            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.账户信息表”中。您可以根据需要移动或删除它。
-            this.账户信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.账户信息表);
-            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
-            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
-            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
-            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
-            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
-            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
-            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
-            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
-            InitPanelOne();
-        }
-
-        #region 学校管理panel
-        /// <summary>
-        /// 用于初始化学校管理panel的显示
-        /// </summary>
-        private void InitPanelOne()
-        {
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.汇总学校信息表”中。您可以根据需要移动或删除它。
+            this.汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
             // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学校信息表”中。您可以根据需要移动或删除它。
             this.学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
-
+            专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
+            班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
             collegeCodeComboBox.SelectedValueChanged += collegeCodeComboBox_SelectedValueChanged;
             professionCodeComboBox.SelectedValueChanged += professionCodeComboBox_SelectedValueChanged;
             classCodeComboBox.SelectedValueChanged += classCodeComboBox_SelectedValueChanged;
-
-            myConnection = new MySqlConnection(connectStringBuilder.ConnectionString);
-            //
-            // 初始化专业信息栏
-            //
-            string professionSelectQuery = "select 专业名, 专业代码 from 专业信息表 where (院系编号 = '$collegeCode')";
-            professionSelectQuery = professionSelectQuery.Replace("$collegeCode", collegeCodeComboBox.Text);
-            // 更新数据源
-            UpdateDataSource(professionBindingSource, professionSelectQuery);
-            // 绑定数据源
-            //professionComboBox.DisplayMember = "专业名";
-            professionComboBox.ValueMember = "专业名";
-            professionComboBox.DataSource = professionBindingSource;
-            //professionCodeComboBox.DisplayMember = "专业代码";
-            professionCodeComboBox.ValueMember = "专业代码";
-            professionCodeComboBox.DataSource = professionBindingSource;
-            //
-            // 初始化班级信息栏
-            //
-            string classSelectQuery = "select 班级名称, 班级号 from 班级信息表 where (专业代码 = '$professionCode')";
-            classSelectQuery = classSelectQuery.Replace("$professionCode", professionCodeComboBox.Text);
-            // 更新数据源
-            UpdateDataSource(classBindingSource, classSelectQuery);
-            // 绑定数据源
-            classComboBox.DataSource = classBindingSource;
-            classComboBox.ValueMember = "班级名称";
-            classCodeComboBox.DataSource = classBindingSource;
-            classCodeComboBox.ValueMember = "班级号";
-            //
-            // 初始化汇总信息表
-            //
-            SetCollegeTableDataGridView();
+            collegeTableDataGridView.CurrentCellChanged += collegeTableDataGridView_CurrentCellChanged;
         }
+
+        void collegeTableDataGridView_CurrentCellChanged(object sender, EventArgs e)
+        {
+            DataRowView myDataRowView = (DataRowView)汇总学校信息表BindingSource.Current;
+            学校信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.学校信息表, myDataRowView["院系编号"].ToString());
+            专业信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.专业信息表, myDataRowView["专业代码"].ToString());
+            班级信息表TableAdapter.FillByClassCode(this.studentinfomanagedatabaseDataSet.班级信息表, myDataRowView["班级号"].ToString());
+        }
+
+        #region 学校管理panel
+
         #region 信息更新事件处理
         /// <summary>
         /// 从班级信息栏中的班级号控件框中获取班级号, 更新DataGridView选中状态
         /// </summary>
         void classCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow myRow in collegeTableDataGridView.Rows)
-            {
-                if (myRow.Cells["班级号"].Value.ToString() == classCodeComboBox.Text)
-                {
-                    collegeTableDataGridView.ClearSelection();
-                    myRow.Selected = true;
-                    collegeTableDataGridView.CurrentCell = myRow.Cells["班级号"];
-                }
-            }
+            汇总学校信息表TableAdapter.FillByClassCode(this.studentinfomanagedatabaseDataSet.汇总学校信息表, classCodeComboBox.Text);
         }
         /// <summary>
         /// 从专业信息栏的专业代码控件框中获取专业代码, 更新班级信息栏
         /// </summary>
         void professionCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            string classSelectQuery = "select 班级名称, 班级号 from 班级信息表 where (专业代码 = '$professionCode')";
-            classSelectQuery = classSelectQuery.Replace("$professionCode", professionCodeComboBox.Text);
-            UpdateDataSource(classBindingSource, classSelectQuery);
+            班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
         }
         /// <summary>
         /// 从学校信息栏中的院系编号控件框获取院系编号, 更新专业信息栏
         /// </summary>
         void collegeCodeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            string professionSelectQuery = "select 专业名, 专业代码 from 专业信息表 where (院系编号 = '$collegeCode')";
-            professionSelectQuery = professionSelectQuery.Replace("$collegeCode", collegeCodeComboBox.Text);
-            UpdateDataSource(professionBindingSource, professionSelectQuery);
+            专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
         }
         #endregion
+        /*
         #region 用于操作数据库的一些方法
         /// <summary>
         /// 用于更新数据源的方法
@@ -271,6 +210,7 @@ namespace 学籍管理系统
 
         }
         #endregion
+         * */
         #region 查询按钮点击事件处理
         /// <summary>
         /// 专业代码查询按钮点击事件处理
@@ -279,7 +219,8 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void professionCodeQueryButton_Click(object sender, EventArgs e)
         {
-            QueryAndSelect(professionCodeComboBox);
+            汇总学校信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.汇总学校信息表, professionCodeComboBox.Text);
+            collegeTableDataGridView.ClearSelection();
         }
         /// <summary>
         /// 班级号查询按钮点击事件处理
@@ -288,7 +229,8 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void classCodeQueryButton_Click(object sender, EventArgs e)
         {
-            QueryAndSelect(classCodeComboBox);
+            汇总学校信息表TableAdapter.FillByClassCode(this.studentinfomanagedatabaseDataSet.汇总学校信息表, classCodeComboBox.Text);
+            collegeTableDataGridView.ClearSelection();
         }
         /// <summary>
         /// 院系编号查询按钮点击事件处理
@@ -297,7 +239,8 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void collegeCodeQueryButton_Click(object sender, EventArgs e)
         {
-            QueryAndSelect(collegeCodeComboBox);
+            汇总学校信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.汇总学校信息表, collegeCodeComboBox.Text);
+            collegeTableDataGridView.ClearSelection();
         }
         #endregion
         #region 删除按钮点击事件处理
@@ -308,17 +251,20 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void classInfoDeleteButton_Click(object sender, EventArgs e)
         {
-            //    
-            // 应该先进行检查外键约束, 当前删除项对应的学生信息表中相应项是否为空, 并给出提示
-            //
-            if (true)
+            try
             {
-
+                var reasult = MessageBox.Show("是否删除该项数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (reasult == DialogResult.Yes)
+                {
+                    班级信息表BindingSource.RemoveCurrent();
+                    班级信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.班级信息表);
+                    班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
+                    汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                }
             }
-            if (classCodeComboBox.Text != string.Empty)
+            catch (System.Exception ex)
             {
-                DeleteOneRecord(classBindingSource, "班级信息表", "班级号", classCodeComboBox.Text);
-                SetCollegeTableDataGridView();
+                MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -329,17 +275,20 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void professionInfoDeleteButton_Click(object sender, EventArgs e)
         {
-            //    
-            // 应该先进行检查外键约束, 当前删除项对应的班级信息表中相应项是否为空, 并给出提示
-            //
-            if (true)
+            try
             {
-
+                var reasult = MessageBox.Show("是否删除该项数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (reasult == DialogResult.Yes)
+                {
+                    专业信息表BindingSource.RemoveCurrent();
+                    专业信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.专业信息表);
+                    专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
+                    汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                }
             }
-            if (professionCodeComboBox.Text != string.Empty)
+            catch (System.Exception ex)
             {
-                DeleteOneRecord(professionBindingSource, "专业信息表", "专业代码", professionCodeComboBox.Text);
-                
+                MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         /// <summary>
@@ -349,16 +298,20 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void collegeInfoDeleteButton_Click(object sender, EventArgs e)
         {
-            //    
-            // 应该先进行检查外键约束, 当前删除项对应的专业信息表中相应项是否为空, 并给出提示
-            //
-            if (true)
+            try
             {
-
+                var reasult = MessageBox.Show("是否删除该项数据", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (reasult == DialogResult.Yes)
+                {
+                    学校信息表BindingSource.RemoveCurrent();
+                    学校信息表TableAdapter.Update(this.studentinfomanagedatabaseDataSet.学校信息表);
+                    学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
+                    汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                }
             }
-            if (collegeCodeComboBox.Text != string.Empty)
+            catch (System.Exception ex)
             {
-                DeleteOneRecord(学校信息表BindingSource, "学校信息表", "院系编号", collegeCodeComboBox.Text);
+                MessageBox.Show("Delete failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -371,19 +324,18 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void classInfoAddButton_Click(object sender, EventArgs e)
         {
-            MySqlCommand addCommand = myConnection.CreateCommand();
-            string addCommandString = "insert into 班级信息表 values(@classCode, @className, @professionCode, @studentCountOfClass)";
-            addCommand.CommandText = addCommandString;
-            addCommand.Parameters.AddWithValue("@classCode", classCodeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@className", classComboBox.Text);
-            addCommand.Parameters.AddWithValue("@professionCode", professionCodeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@studentCountOfClass", 0);
-            AddOneRecord(addCommand);
-            SetCollegeTableDataGridView();
-
-            string classSelectQuery = "select 班级名称, 班级号 from 班级信息表 where (专业代码 = '$professionCode')";
-            classSelectQuery = classSelectQuery.Replace("$professionCode", professionCodeComboBox.Text);
-            UpdateDataSource(classBindingSource, classSelectQuery);
+            try
+            {
+                this.Validate();
+                班级信息表TableAdapter.Insert(classCodeComboBox.Text, classComboBox.Text, professionCodeComboBox.Text, 0);
+                班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Add succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Add failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         /// <summary>
         /// 专业信息增加按钮点击事件处理
@@ -392,18 +344,18 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void professionInfoAddButton_Click(object sender, EventArgs e)
         {
-            MySqlCommand addCommand = myConnection.CreateCommand();
-            string addCommandString = "insert into 专业信息表 values(@professionCode, @professionName, @collegeCode, @classCountOfProfession)";
-            addCommand.CommandText = addCommandString;
-            addCommand.Parameters.AddWithValue("@professionCode", professionCodeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@professionName", professionComboBox.Text);
-            addCommand.Parameters.AddWithValue("@collegeCode", collegeCodeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@classCountOfProfession", 0);
-            AddOneRecord(addCommand);
-            string professionSelectQuery = "select 专业名, 专业代码 from 专业信息表 where (院系编号 = '$collegeCode')";
-            professionSelectQuery = professionSelectQuery.Replace("$collegeCode", collegeCodeComboBox.Text);
-            
-            UpdateDataSource(professionBindingSource, professionSelectQuery);
+            try
+            {
+                this.Validate();
+                专业信息表TableAdapter.Insert(professionCodeComboBox.Text, professionComboBox.Text, collegeCodeComboBox.Text, 0);
+                专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Add succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Add failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         /// <summary>
         /// 院系信息增加按钮点击事件处理
@@ -412,15 +364,18 @@ namespace 学籍管理系统
         /// <param name="e"></param>
         private void collegeInfoAddButton_Click(object sender, EventArgs e)
         {
-            MySqlCommand addCommand = myConnection.CreateCommand();
-            string addCommandString = "insert into 学校信息表 values(@collegeCode, @collegeName, @professionCountOfCollege)";
-            addCommand.CommandText = addCommandString;
-            addCommand.Parameters.AddWithValue("@collegeCode", collegeCodeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@collegeName", collegeComboBox.Text);
-            addCommand.Parameters.AddWithValue("@professionCountOfCollege", 0);
-            MessageBox.Show(addCommand.CommandText);
-            AddOneRecord(addCommand);
-
+            try
+            {
+                this.Validate();
+                学校信息表TableAdapter.Insert(collegeCodeComboBox.Text, collegeComboBox.Text, 0);
+                学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Add succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Add failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         /// <summary>
         /// 用于学校信息管理panel的刷新
@@ -432,20 +387,56 @@ namespace 学籍管理系统
 
         private void updateCollegeInfoButton_Click(object sender, EventArgs e)
         {
-            UpdateOneRecord(学校信息表BindingSource, "学校信息表", collegeComboBox, collegeCodeComboBox);
-            InitPanelOne();
+            try
+            {
+                this.Validate();
+                DataRowView myDataRowView = (DataRowView)学校信息表BindingSource.Current;
+                学校信息表TableAdapter.Update(collegeCodeComboBox.Text, collegeComboBox.Text, int.Parse(myDataRowView["专业数目"].ToString()), 
+                    myDataRowView["院系编号"].ToString(), myDataRowView["学院名"].ToString(), int.Parse(myDataRowView["专业数目"].ToString()));
+                学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Update succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void updateProfessionInfoButton_Click(object sender, EventArgs e)
         {
-            UpdateOneRecord(professionBindingSource, "专业信息表", professionComboBox, professionCodeComboBox);
-            InitPanelOne();
+            try
+            {
+                this.Validate();
+                DataRowView myDataRowView = (DataRowView)专业信息表BindingSource.Current;
+                专业信息表TableAdapter.Update(professionCodeComboBox.Text, professionComboBox.Text, collegeCodeComboBox.Text, int.Parse(myDataRowView["班级数目"].ToString()), 
+                    myDataRowView["专业代码"].ToString(), myDataRowView["专业名"].ToString(), myDataRowView["院系编号"].ToString(), int.Parse(myDataRowView["班级数目"].ToString()));
+                专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Update succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void updateClassInfoButton_Click(object sender, EventArgs e)
         {
-            UpdateOneRecord(classBindingSource, "班级信息表", classComboBox, classCodeComboBox);
-            InitPanelOne();
+            try
+            {
+                this.Validate();
+                DataRowView myDataRowView = (DataRowView)班级信息表BindingSource.Current;
+                班级信息表TableAdapter.Update(classCodeComboBox.Text, classComboBox.Text, professionCodeComboBox.Text, int.Parse(myDataRowView["班级人数"].ToString()),
+                    myDataRowView["班级号"].ToString(), myDataRowView["班级名称"].ToString(), myDataRowView["专业代码"].ToString(), int.Parse(myDataRowView["班级人数"].ToString()));
+                班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
+                汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+                MessageBox.Show("Update succeed");
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show("Update failed:" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
         #region 刷新按钮点击事件处理
@@ -454,7 +445,13 @@ namespace 学籍管理系统
         /// </summary>
         private void refresh_Click(object sender, EventArgs e)
         {
-            InitPanelOne();
+            this.汇总学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.汇总学校信息表);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学校信息表”中。您可以根据需要移动或删除它。
+            this.学校信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学校信息表);
+            专业信息表TableAdapter.FillByCollegeCode(this.studentinfomanagedatabaseDataSet.专业信息表, collegeCodeComboBox.Text);
+            班级信息表TableAdapter.FillByProfessionCode(this.studentinfomanagedatabaseDataSet.班级信息表, professionCodeComboBox.Text);
+            // TODO:  这行代码将数据加载到表“studentinfomanagedatabaseDataSet.学生信息表”中。您可以根据需要移动或删除它。
+            this.学生信息表TableAdapter.Fill(this.studentinfomanagedatabaseDataSet.学生信息表);
         }
         #endregion
         #endregion
@@ -681,7 +678,6 @@ namespace 学籍管理系统
 
         private void exitSystemLable_Click(object sender, EventArgs e)
         {
-            //this.Close();
             Application.Exit();
         }
        
